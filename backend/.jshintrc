@@ -1,0 +1,24 @@
+{
+  "esversion": 2021,
+  "node": true,
+  "strict": false,
+  "globalstrict": false,
+  "undef": true,
+  "unused": true,
+  "predef": [
+    "describe",
+    "it",
+    "before",
+    "beforeEach",
+    "after",
+    "afterEach",
+    "expect",
+    "jest",
+    "test"
+  ],
+  "maxcomplexity": 10,
+  "maxdepth": 4,
+  "maxparams": 5,
+  "maxstatements": 20,
+  "maxlen": 120
+}

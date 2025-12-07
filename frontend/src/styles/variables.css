@@ -1,0 +1,24 @@
+:root {
+    --primary: #6bbf43;
+    --primary-dark: #4e8c2b;
+    --primary-light: #b7e4a0;
+    --secondary: #8bc34a;
+    --background: #f6fbf4;
+    --background-card: #fff;
+    --border: #d4e7c5;
+    --shadow: 0 8px 24px rgba(107, 191, 67, 0.08);
+    --radius: 14px;
+    --input-bg: #f9fafb;
+    --input-border: #cde7c1;
+    --input-focus: #6bbf43;
+    --input-placeholder: #a3bfa1;
+    --text-main: #1d2b1e;
+    --text-secondary: #5b7c4d;
+    --error-bg: #fee2e2;
+    --error-text: #b91c1c;
+    --success-bg: #e6f9ea;
+    --success-text: #256029;
+    --footer-text: #6b7280;
+    --transition: 0.2s cubic-bezier(.4, 0, .2, 1);
+    --font-main: 'Segoe UI', 'Roboto', Arial, sans-serif;
+}

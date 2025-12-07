@@ -1,0 +1,155 @@
+@import '../../../styles/variables.css';
+
+.areaContainer {
+    display: flex;
+    min-height: 100vh;
+    background: var(--background);
+    font-family: var(--font-main);
+}
+
+.mainContent {
+    flex: 1;
+    margin-left: 18rem;
+    padding: 2rem;
+    background: var(--background);
+    min-height: 100vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.pageTitle {
+    font-size: 2rem;
+    color: var(--text-main);
+    font-weight: 600;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--border);
+    font-family: var(--font-main);
+    position: sticky;
+    top: 0;
+    background: var(--background);
+    z-index: 100;
+}
+
+.tabView {
+    background: var(--background-card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+}
+
+.scheduleContainer {
+    background: var(--background-card);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.searchContainer {
+    margin-bottom: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.searchInput {
+    flex: 1;
+    min-width: 250px;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--input-border);
+    border-radius: 6px;
+    font-size: 1rem;
+    background: var(--input-bg);
+    color: var(--text-main);
+    transition: border-color 0.3s ease;
+}
+
+.searchInput:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(107, 191, 67, 0.1);
+}
+
+.employeeGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.employeeCard {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.employeeCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.paginationContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding: 1rem;
+    background: var(--background-card);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+.paginationInfo {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+/* Quitar efectos de hover en botones solo-ícono de PrimeReact */
+:where(.p-button.p-button-icon-only, .p-button.p-button-icon-only:hover, .p-button.p-button-icon-only:focus) {
+    box-shadow: none;
+    background: none;
+    border-color: inherit;
+    color: inherit;
+    transition: none;
+}
+.areaContainer :where(.p-button.p-button-icon-only, .p-button.p-button-icon-only:hover, .p-button.p-button-icon-only:focus) {
+    box-shadow: none;
+    background: none;
+    border-color: inherit;
+    color: inherit;
+    transition: none;
+}
+
+@media (max-width: 768px) {
+    .mainContent {
+        margin-left: 0;
+        padding: 1rem;
+    }
+    
+    .pageTitle {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .searchContainer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .searchInput {
+        min-width: auto;
+    }
+
+    .employeeGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .paginationContainer {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}

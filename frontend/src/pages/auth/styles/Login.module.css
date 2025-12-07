@@ -1,0 +1,333 @@
+@import '../../../styles/variables.css';
+
+/* Contenedor principal */
+.fbLoginWrapper {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    margin: 0;
+    position: relative;
+}
+
+/* Botón de volver */
+.backButton {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    background: rgba(255, 255, 255, 0.95);
+    color: #43a047;
+    border: 2px solid #43a047;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.backButton:hover {
+    background: #43a047;
+    color: white;
+    transform: translateX(-5px);
+    box-shadow: 0 4px 15px rgba(67, 160, 71, 0.3);
+}
+
+/* Lado izquierdo con fondo verde profesional */
+.fbLeft {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #43a047 0%, #81c784 100%); /* Verde más claro y profesional */
+    min-height: 100vh;
+    padding: 0 32px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Ondas decorativas en el fondo izquierdo */
+.fbLeft::after {
+    content: "";
+    position: absolute;
+    right: -80px;
+    bottom: -60px;
+    width: 80%;
+    height: 80%;
+    background: url("data:image/svg+xml;utf8,<svg width='400' height='400' xmlns='http://www.w3.org/2000/svg'><path d='M0,300 Q100,350 200,300 T400,300 V400 H0 Z' fill='%23ffffff' opacity='0.5'/></svg>");
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Mejora del logo y contenido */
+.fbLogoText {
+    max-width: 500px;
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fbLogo {
+    width: 140px;
+    height: 140px;
+    margin-bottom: 24px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 4px 24px rgba(67, 160, 71, 0.18);
+    border: 5px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: contain;
+}
+
+.fbTitle {
+    font-size: 3.5rem;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-family: var(--font-main);
+    text-shadow: 0 2px 4px rgba(67, 160, 71, 0.18);
+    text-align: center;
+}
+
+.fbDesc {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.95);
+    font-family: var(--font-main);
+    margin: 0;
+    line-height: 1.4;
+    text-shadow: 0 1px 2px rgba(67, 160, 71, 0.10);
+    text-align: center;
+}
+
+/* Lado derecho con formulario */
+.fbRight {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 40px;
+    background-color: #f5f5f5;
+}
+
+.loginCard {
+    width: 100%;
+    max-width: 400px;
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(67, 160, 71, 0.10);
+    padding: 30px;
+    margin-bottom: 28px;
+    position: relative;
+}
+
+/* Icono de usuario */
+.userIcon {
+    display: block;
+    margin: 0 auto 18px auto;
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    border-radius: 50%;
+    background: #e3f2fd;
+    border: 2px solid #43a047;
+    box-shadow: 0 2px 8px rgba(67,160,71,0.10);
+}
+
+/* Formulario */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.inputGroup {
+    margin-bottom: 0;
+}
+
+/* Mostrar las etiquetas de los campos */
+.inputGroup label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 15px;
+    color: #4b4b4b;
+    font-weight: 500;
+    font-family: var(--font-main);
+}
+
+.input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 16px;
+    color: #333333;
+    background: white;
+    font-family: var(--font-main);
+    transition: all 0.2s ease;
+}
+
+.input:focus {
+    border-color: #43a047;
+    box-shadow: 0 0 0 2px rgba(67, 160, 71, 0.15);
+    outline: none;
+}
+
+.passwordInputWrapper {
+    position: relative;
+}
+
+.passwordInput {
+    padding-right: 40px;
+}
+
+.togglePasswordBtn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #757575;
+}
+
+.togglePasswordBtn:hover {
+    color: #43a047;
+}
+
+.options {
+    display: flex;
+    justify-content: center;
+    margin: 16px 0 0;
+}
+
+.forgotPassword {
+    color: #43a047;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.forgotPassword:hover {
+    color: #388e3c;
+    text-decoration: underline;
+}
+
+.loginButton {
+    background-color: #43a047;
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    transition: all 0.2s ease;
+}
+
+.loginButton:hover {
+    background-color: #388e3c;
+    box-shadow: 0 2px 6px rgba(27, 94, 32, 0.3);
+}
+
+.loginButton:disabled {
+    background-color: #b9f6ca;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.errorMessage {
+    background-color: #fdecea;
+    color: #d32f2f;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 14px;
+    border: 1px solid #ffcdd2;
+    font-family: var(--font-main);
+}
+
+/* Media queries para responsive */
+@media (max-width: 900px) {
+    .fbLoginWrapper {
+        flex-direction: column;
+    }
+    
+    .fbLeft {
+        min-height: 280px;
+        padding: 40px 16px;
+    }
+    
+    .fbRight {
+        padding: 30px 20px 40px;
+    }
+    
+    .fbLogoText {
+        text-align: center;
+        padding: 0;
+    }
+    
+    .fbTitle {
+        font-size: 2.5rem;
+    }
+    
+    .fbDesc {
+        font-size: 1.2rem;
+    }
+    
+    .fbLogo {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 18px;
+    }
+}
+
+@media (max-width: 520px) {
+    .fbLeft {
+        padding: 30px 16px;
+        min-height: 200px;
+    }
+    
+    .loginCard {
+        box-shadow: none;
+        padding: 20px 15px;
+        background: white;
+    }
+    
+    .fbTitle {
+        font-size: 2rem;
+    }
+    
+    .fbDesc {
+        font-size: 1rem;
+    }
+    
+    .fbLogo {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 12px;
+    }
+    
+    .input {
+        padding: 12px 14px;
+    }
+}
+
+/* Ocultar el logo en el formulario */
+.logoContainer {
+    display: none;
+}

@@ -1,0 +1,265 @@
+/* Estilos específicos para ReportesManagement */
+
+/* Layout principal */
+.reportes-management {
+  display: flex;
+  min-height: 100vh;
+  background: #f0f2f5;
+}
+
+.reportes-management .rh-dashboard-content {
+  flex: 1;
+  margin-left: 18rem;
+  padding: 2rem;
+  overflow: hidden; /* Previene desbordamiento */
+}
+
+/* Card contenedor */
+.reportes-management .card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  height: calc(100vh - 4rem);
+  display: flex;
+  flex-direction: column;
+}
+
+.reportes-management h2 {
+  margin: 0 0 1.5rem 0;
+  color: #334155;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* Toolbar de filtros */
+.reportes-management .p-toolbar {
+  padding: 0.75rem;
+  background: #f8fafc;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.reportes-management .p-toolbar .p-toolbar-group-left,
+.reportes-management .p-toolbar .p-toolbar-group-right {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Inputs y botones */
+.reportes-management .p-calendar,
+.reportes-management .p-inputtext {
+  height: 2.5rem;
+}
+
+.reportes-management .p-calendar .p-inputtext {
+  width: 140px;
+}
+
+.reportes-management .p-button {
+  height: 2.5rem;
+}
+
+/* Contenedor de tabla */
+.reportes-table-container {
+  position: relative;
+  flex-grow: 1;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background: white;
+}
+
+/* DataTable */
+.reportes-datatable {
+  height: 100%;
+  width: 100%;
+}
+
+.reportes-datatable .p-datatable-wrapper {
+  overflow: auto;
+  height: calc(100% - 52px); /* Resta espacio del paginador */
+}
+
+/* Encabezado de tabla */
+.reportes-datatable .p-datatable-header {
+  background: #f8fafc;
+  padding: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.reportes-datatable .p-datatable-thead > tr > th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #f1f5f9;
+  border-bottom: 2px solid #cbd5e1;
+  text-align: center;
+  font-weight: 600;
+  padding: 0.75rem 0.5rem;
+  white-space: nowrap;
+}
+
+.reportes-datatable .p-datatable-tbody > tr > td {
+  padding: 0.75rem 0.5rem;
+  border-bottom: 1px solid #e2e8f0;
+  white-space: nowrap;
+}
+
+.reportes-datatable .p-datatable-tbody > tr:nth-child(even) {
+  background: #f8fafc;
+}
+
+/* Estilos para diferentes valores de estado */
+.reportes-datatable .p-tag {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+.p-tag-success { background: #dcfce7; color: #166534; }
+.p-tag-warning { background: #fef3c7; color: #92400e; }
+.p-tag-danger { background: #fee2e2; color: #b91c1c; }
+.p-tag-info { background: #e0f2fe; color: #0369a1; }
+
+/* Paginador */
+.reportes-datatable .p-paginator {
+  background: white;
+  border-top: 1px solid #e2e8f0;
+  padding: 0.5rem;
+}
+
+/* Footer con totales */
+.reportes-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #f1f5f9;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.reportes-footer-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.reportes-footer-summary span {
+  display: flex;
+  align-items: center;
+}
+
+.reportes-footer-summary .label {
+  margin-right: 0.5rem;
+  color: #64748b;
+}
+
+.reportes-footer-summary .value {
+  font-weight: 600;
+  color: #334155;
+}
+
+.reportes-footer-total {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* Estilos responsivos */
+@media (max-width: 1200px) {
+  .reportes-management .p-calendar .p-inputtext {
+    width: 120px;
+  }
+}
+
+@media (max-width: 992px) {
+  .reportes-management .p-toolbar {
+    padding: 0.5rem;
+  }
+
+  .reportes-datatable .p-datatable-thead > tr > th,
+  .reportes-datatable .p-datatable-tbody > tr > td {
+    padding: 0.6rem 0.4rem;
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .reportes-management .rh-dashboard-content {
+    margin-left: 0;
+    padding: 0.5rem;
+  }
+
+  .reportes-management .card {
+    padding: 1rem;
+  }
+
+  .reportes-management .responsive-title {
+    font-size: 1.25rem;
+    text-align: center;
+  }
+
+  .responsive-toolbar {
+    padding: 0.5rem !important;
+  }
+
+  .reportes-management .p-toolbar .p-toolbar-group-left,
+  .reportes-management .p-toolbar .p-toolbar-group-right {
+    flex-direction: column;
+    width: 100%;
+    align-items: stretch;
+  }
+
+  .reportes-management .p-datatable .p-datatable-thead > tr > th,
+  .reportes-management .p-datatable .p-datatable-tbody > tr > td {
+    padding: 0.5rem 0.3rem;
+    font-size: 0.8rem;
+  }
+
+  .reportes-footer {
+    flex-direction: column;
+    padding: 0.75rem;
+  }
+
+  .reportes-footer-summary {
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+
+  .reportes-footer-summary span {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .reportes-management .p-button .p-button-icon-left {
+    margin-right: 0;
+  }
+
+  .reportes-management .p-button .p-button-label {
+    display: none;
+  }
+
+  .reportes-management .p-button.p-button-icon-only {
+    width: 2.5rem;
+    padding: 0.5rem 0;
+  }
+
+  .reportes-management .p-button.p-button-icon-only .p-button-icon-left {
+    margin-right: 0;
+  }
+  
+  .reportes-management .p-button {
+    padding: 0.5rem;
+  }
+}

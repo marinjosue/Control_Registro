@@ -1,0 +1,210 @@
+/* ========== ESTILOS GLOBALES PARA MODALES - SIMPLE Y LIMPIO ========== */
+
+/* Fondo del modal (overlay) */
+.p-dialog-mask {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Contenedor principal del diálogo */
+.p-dialog {
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  border: none;
+  overflow: hidden;
+}
+
+/* Header del modal */
+.p-dialog-header {
+  background: #3498db;
+  color: white;
+  padding: 1.25rem 1.5rem;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+}
+
+.p-dialog-title {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: white;
+}
+
+.p-dialog-header-icon {
+  color: white;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+}
+
+.p-dialog-header-icon:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.p-dialog-header-close-icon {
+  color: white;
+  font-size: 1rem;
+}
+
+/* Contenido del modal */
+.p-dialog-content {
+  padding: 1.5rem;
+  background: white;
+  color: #2c3e50;
+}
+
+/* Footer del modal */
+.p-dialog-footer {
+  padding: 1rem 1.5rem;
+  background: #f8f9fa;
+  border-top: 1px solid #e0e0e0;
+  border-radius: 0 0 8px 8px;
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+}
+
+/* Botones del modal */
+.p-dialog-footer .p-button {
+  padding: 0.65rem 1.25rem;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  border: none;
+}
+
+.p-dialog-footer .p-button-primary,
+.p-dialog-footer .p-button.p-button-primary {
+  background: #3498db;
+  color: white;
+}
+
+.p-dialog-footer .p-button-primary:hover {
+  background: #2980b9;
+}
+
+.p-dialog-footer .p-button-secondary,
+.p-dialog-footer .p-button.p-button-secondary {
+  background: #95a5a6;
+  color: white;
+}
+
+.p-dialog-footer .p-button-secondary:hover {
+  background: #7f8c8d;
+}
+
+.p-dialog-footer .p-button-text {
+  color: #3498db;
+}
+
+.p-dialog-footer .p-button-text:hover {
+  background: rgba(52, 152, 219, 0.1);
+}
+
+/* Inputs dentro de modales */
+.p-dialog-content .p-inputtext,
+.p-dialog-content .p-dropdown,
+.p-dialog-content .p-calendar,
+.p-dialog-content .p-inputtextarea {
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  padding: 0.65rem;
+}
+
+.p-dialog-content .p-inputtext:focus,
+.p-dialog-content .p-dropdown:focus,
+.p-dialog-content .p-calendar:focus,
+.p-dialog-content .p-inputtextarea:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
+}
+
+/* Labels dentro de modales */
+.p-dialog-content label {
+  font-weight: 500;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+  display: block;
+  font-size: 0.9rem;
+}
+
+/* Form groups dentro de modales */
+.p-dialog-content .p-field {
+  margin-bottom: 1.25rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .p-dialog {
+    width: 95vw !important;
+    max-width: 95vw !important;
+  }
+
+  .p-dialog-header {
+    padding: 1rem 1.5rem;
+  }
+
+  .p-dialog-content {
+    padding: 1.5rem;
+  }
+
+  .p-dialog-footer {
+    padding: 1rem 1.5rem;
+    flex-direction: column;
+  }
+
+  .p-dialog-footer .p-button {
+    width: 100%;
+  }
+
+  .p-dialog-title {
+    font-size: 1.25rem;
+  }
+}
+
+/* ========== ESTILOS ESPECÍFICOS POR TIPO DE MODAL ========== */
+
+/* Modal de confirmación */
+.p-confirm-dialog .p-dialog-header {
+  background: #f39c12;
+}
+
+.p-confirm-dialog-icon {
+  font-size: 2.5rem;
+  color: #f39c12;
+  margin-bottom: 1rem;
+}
+
+.p-confirm-dialog-message {
+  font-size: 1rem;
+  color: #2c3e50;
+  margin-bottom: 1.25rem;
+}
+
+/* Modal de error */
+.p-dialog-error .p-dialog-header {
+  background: #e74c3c;
+}
+
+/* Modal de éxito */
+.p-dialog-success .p-dialog-header {
+  background: #2ecc71;
+}
+
+/* Modal de información */
+.p-dialog-info .p-dialog-header {
+  background: #3498db;
+}
+
+/* Mejoras para el modal de cambio de contraseña */
+.password-change-modal .p-dialog-header,
+.profile-edit-modal .p-dialog-header {
+  background: #3498db;
+}
+
+/* Icono de ojo para mostrar/ocultar contraseña */
+.p-password {
+  width: 100%;
+}
+
+.p-password .p-inputtext {
+  width: 100%;
+}

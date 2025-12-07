@@ -1,0 +1,232 @@
+:root {
+  /* Color scheme simple y profesional */
+  --menu-bg-primary: #2c3e50;
+  --menu-bg-secondary: #34495e;
+  --menu-bg-hover: #3498db;
+  --menu-header-bg: #2c3e50;
+  --menu-text-primary: #ffffff;
+  --menu-text-secondary: #ecf0f1;
+  --menu-text-muted: #95a5a6;
+  --menu-border-color: rgba(255, 255, 255, 0.08);
+  --menu-avatar-bg: #3498db;
+  --menu-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile menu button */
+.mobile-menu-button button {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1100;
+  background: var(--menu-bg-primary);
+  color: var(--menu-text-primary);
+  border: none;
+  box-shadow: var(--menu-shadow);
+}
+
+/* Desktop sidebar */
+.desktop-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 16rem;
+  height: 100vh;
+  background: var(--menu-bg-primary);
+  border-right: 1px solid var(--menu-border-color);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+/* User profile header */
+.user-profile-header {
+  padding: 1.5rem 1rem;
+  border-bottom: 1px solid var(--menu-border-color);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--menu-header-bg);
+}
+
+.user-avatar {
+  background: var(--menu-avatar-bg);
+  color: var(--menu-text-primary);
+  font-weight: 600;
+  font-size: 1rem;
+  width: 40px;
+  height: 40px;
+}
+
+.user-name {
+  color: var(--menu-text-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.15rem;
+}
+
+.user-email {
+  color: var(--menu-text-muted);
+  font-size: 0.8rem;
+  margin-bottom: 0.1rem;
+}
+
+.user-role {
+  color: var(--menu-text-secondary);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* Menu container */
+.menu-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.5rem;
+}
+
+/* Footer */
+.menu-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--menu-border-color);
+  text-align: center;
+  background: var(--menu-bg-primary);
+}
+
+.footer-text {
+  color: var(--menu-text-subtle);
+  font-size: 0.75rem;
+}
+
+/* Mobile sidebar */
+.mobile-sidebar {
+  width: 85%;
+  max-width: 320px;
+  background: var(--menu-bg-primary);
+  border: none;
+}
+
+.mobile-menu-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: var(--menu-text-primary);
+}
+
+/* Dark menu styles - simple y limpio */
+.dark-menu *, .dark-menu-mobile * {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.dark-menu .p-panelmenu-header-link,
+.dark-menu-mobile .p-panelmenu-header-link {
+  background-color: transparent !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+  border: none !important;
+  padding: 0.75rem 1rem !important;
+  font-weight: 500 !important;
+  font-size: 0.95rem !important;
+}
+
+.dark-menu .p-panelmenu-header-link:hover,
+.dark-menu-mobile .p-panelmenu-header-link:hover {
+  background-color: var(--menu-bg-hover) !important;
+}
+
+.dark-menu .p-menuitem-link,
+.dark-menu-mobile .p-menuitem-link {
+  background-color: transparent !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+  border: none !important;
+  margin: 0 !important;
+  padding: 0.65rem 1rem 0.65rem 2.5rem !important;
+  font-size: 0.9rem !important;
+}
+
+.dark-menu .p-menuitem-link:hover,
+.dark-menu-mobile .p-menuitem-link:hover {
+  background-color: var(--menu-bg-hover) !important;
+  color: var(--menu-text-primary) !important;
+}
+
+.dark-menu .p-panelmenu-content,
+.dark-menu-mobile .p-panelmenu-content {
+  padding: 0.25rem 0 !important;
+  margin: 0 !important;
+  background-color: rgba(0, 0, 0, 0.15) !important;
+  border: none !important;
+}
+
+.dark-menu .p-submenu-list,
+.dark-menu-mobile .p-submenu-list {
+  padding: 0 !important;
+  margin: 0 !important;
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.dark-menu .p-panelmenu-panel,
+.dark-menu-mobile .p-panelmenu-panel {
+  border: none !important;
+  margin: 0.25rem 0 !important;
+  background: transparent !important;
+}
+
+/* Íconos del menú - visibles */
+.dark-menu i,
+.dark-menu-mobile i,
+.dark-menu .p-menuitem-icon,
+.dark-menu-mobile .p-menuitem-icon,
+.dark-menu svg,
+.dark-menu-mobile svg,
+.dark-menu .p-panelmenu-header-link i,
+.dark-menu-mobile .p-panelmenu-header-link i {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-size: 0.95rem !important;
+}
+
+/* Texto del menú - visible */
+.dark-menu .p-menuitem-text,
+.dark-menu-mobile .p-menuitem-text {
+  color: rgba(255, 255, 255, 0.95) !important;
+  font-size: 0.9rem !important;
+}
+
+/* Hover en íconos y texto */
+.dark-menu .p-menuitem-link:hover i,
+.dark-menu-mobile .p-menuitem-link:hover i,
+.dark-menu .p-panelmenu-header-link:hover i,
+.dark-menu-mobile .p-panelmenu-header-link:hover i {
+  color: #ffffff !important;
+}
+
+.dark-menu .p-menuitem-link:hover .p-menuitem-text,
+.dark-menu-mobile .p-menuitem-link:hover .p-menuitem-text {
+  color: #ffffff !important;
+}
+
+/* Eliminar bordes específicos de PrimeReact */
+.p-panelmenu .p-panelmenu-content,
+.p-panelmenu .p-panelmenu-header,
+.p-panelmenu .p-panelmenu-panel,
+.p-menuitem-link {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+
+
+/* PanelMenu variables - simple */
+.panel-menu-custom {
+  background-color: transparent;
+  border: none;
+  --p-panelmenu-header-bg: transparent;
+  --p-panelmenu-header-text-color: var(--menu-text-primary);
+  --p-panelmenu-header-border: none;
+  --p-panelmenu-content-bg: var(--menu-bg-secondary);
+  --p-panelmenu-content-border: none;
+  --p-submenu-content-padding: 0;
+  --p-menuitem-border-bottom: none;
+}

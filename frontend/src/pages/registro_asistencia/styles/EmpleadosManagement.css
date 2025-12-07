@@ -1,0 +1,265 @@
+@import './TableStyles.css';
+
+.empleados-management {
+    display: flex;
+    min-height: 100vh;
+    background: #f0f2f5;
+}
+.sticky-table-container {
+    overflow-x: auto;
+    position: relative;
+}
+
+.empleados-management .menu-lateral {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 18rem;
+    height: 100vh;
+    z-index: 100;
+}
+.p-datatable-thead > tr > th[style*="position: sticky"] {
+    z-index: 1100 !important;
+    background: #fff !important;
+    box-shadow: -2px 0 8px -4px rgba(0,0,0,0.15) !important;
+}
+
+.p-datatable-tbody > tr > td[style*="position: sticky"] {
+    z-index: 900 !important;
+    background: #fff !important;
+    box-shadow: -2px 0 8px -4px rgba(0,0,0,0.15) !important;
+}
+.empleados-management .card {
+    flex: 1;
+    margin-left: 18rem; 
+    padding: 2rem;
+    max-width: calc(100% - 18rem);
+    overflow: visible; /* Cambiado de hidden a visible */
+}
+
+/* Contenedor específico para la tabla de empleados */
+.empleados-table-container {
+    background: white;
+    border-radius: 6px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow: visible !important;
+}
+
+/* Estilos para mejorar la visualización de la tabla */
+.empleados-management .p-datatable .p-datatable-header {
+    background: #f8f9fa;
+    color: #495057;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.empleados-management .p-datatable {
+    overflow-x: auto; /* Permite que la tabla tenga scroll horizontal */
+}
+
+.empleados-management .p-datatable-wrapper {
+    overflow-x: auto; /* Asegura que el contenedor de la tabla permita scroll */
+}
+
+.empleados-management .p-toolbar {
+    background: #ffffff;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+
+/* Enhanced input styling for better mobile experience */
+.p-input-icon-left {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.p-input-icon-left > .pi {
+  margin-left: 0.75rem;
+  margin-right: -2rem;
+  font-size: 1.2rem;
+  color: #495057;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.p-input-icon-left > input {
+  padding-left: 2.2rem !important;
+  height: 2.5rem;
+  font-size: 1rem;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* Para encabezados sticky que están también fijos horizontalmente */
+.p-datatable-sticky .p-datatable-thead > tr > th[style*="position: sticky"] {
+    z-index: 1100 !important;
+    background: #fff !important;
+    box-shadow: -2px 2px 8px -4px rgba(0,0,0,0.15) !important;
+}
+
+/* Para encabezados que necesitan ser sticky tanto horizontal como verticalmente */
+.p-datatable.p-datatable-sticky .p-datatable-thead > tr > th[style*="position: sticky"] {
+    z-index: 1200 !important;
+    background: #fff !important;
+    position: sticky !important;
+    top: 0 !important;
+    right: 0 !important;
+    box-shadow: -2px 2px 8px -4px rgba(0,0,0,0.15) !important;
+}
+
+/* Para mantener los encabezados siempre visibles */
+.p-datatable-thead > tr > th.p-frozen-column {
+    z-index: 1100 !important;
+    background: #fff !important;
+    position: sticky !important;
+    top: 0;
+}
+
+/* Estilos específicos para columnas frozen/sticky */
+.p-datatable .p-datatable-thead > tr > th.p-frozen-column {
+    z-index: 1001 !important;
+    background: #fff !important;
+    position: sticky !important;
+    box-shadow: -2px 0 8px -4px rgba(0,0,0,0.15) !important;
+}
+
+.p-datatable .p-datatable-tbody > tr > td.p-frozen-column {
+    z-index: 1 !important;
+    background: #fff !important;
+    position: sticky !important;
+    box-shadow: -2px 0 8px -4px rgba(0,0,0,0.15) !important;
+}
+
+/* Para mantener el sticky header funcionando correctamente */
+.p-datatable.p-datatable-sticky .p-datatable-thead > tr > th {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
+    background: #fff !important;
+}
+
+/* Para la columna de acciones específicamente */
+.p-datatable.p-datatable-sticky .p-datatable-thead > tr > th.p-frozen-column {
+    z-index: 1002 !important;
+    position: sticky !important;
+    top: 0 !important;
+    right: 0 !important;
+}
+
+/* Mejoras para la tabla responsive */
+.responsive-datatable {
+    font-size: 0.875rem;
+}
+
+.responsive-datatable .p-datatable-header {
+    padding: 0.75rem;
+}
+
+.responsive-datatable .p-datatable-tbody > tr > td {
+    padding: 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Estilos responsive mejorados */
+@media (max-width: 768px) {
+    .empleados-management {
+        flex-direction: column;
+    }
+    
+    .empleados-management .card {
+        margin-left: 0;
+        padding: 0.5rem;
+        max-width: 100%;
+    }
+    
+    .empleados-management .menu-lateral {
+        position: relative;
+        width: 100%;
+        height: auto;
+        margin-bottom: 0.5rem;
+    }
+    
+    /* Tabla más compacta en móvil */
+    .empleados-table-container {
+        padding: 0.5rem;
+        overflow-x: auto;
+    }
+    
+    .responsive-datatable {
+        font-size: 0.75rem;
+    }
+    
+    .responsive-datatable .p-datatable-tbody > tr > td {
+        padding: 0.25rem 0.5rem;
+        min-width: 80px;
+    }
+    
+    .responsive-datatable .p-datatable-thead > tr > th {
+        padding: 0.5rem;
+        font-size: 0.75rem;
+    }
+    
+    /* Ajustar columna de acciones en móvil */
+    .responsive-datatable .p-datatable-tbody > tr > td[style*="position: sticky"] {
+        min-width: 80px !important;
+    }
+    
+    /* Botones más pequeños en móvil */
+    .responsive-datatable .p-button {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.75rem;
+    }
+    
+    /* Toolbar responsive */
+    .p-toolbar {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .p-toolbar .p-toolbar-group-left,
+    .p-toolbar .p-toolbar-group-right {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    /* Paginación más compacta */
+    .p-paginator {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0.5rem;
+    }
+    
+    .p-paginator .p-paginator-pages {
+        display: none; /* Ocultar números de página en móvil */
+    }
+}
+
+@media (max-width: 480px) {
+    /* Pantallas muy pequeñas */
+    .empleados-management .card {
+        padding: 0.25rem;
+    }
+    
+    .responsive-datatable {
+        font-size: 0.7rem;
+    }
+    
+    .responsive-datatable .p-datatable-tbody > tr > td {
+        padding: 0.25rem;
+        min-width: 60px;
+    }
+    
+    /* Simplificar paginación en móviles muy pequeños */
+    .p-paginator .p-dropdown {
+        display: none;
+    }
+    
+    .p-paginator .p-paginator-current {
+        display: none;
+    }
+}
