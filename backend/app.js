@@ -11,28 +11,28 @@ const qrRoutes = require('./routes/qr');
 const usuariosRoutes = require('./routes/usuarios');
 const calcularHorasRoutes = require('./routes/calculoHora');
 
-// ========== RUTAS PARA TABLET ==========
+// --- Importar rutas para tablet ---
 const tabletEmpleadoRoutes = require('./routes/tablet/empleados');
 const tabletAsistenciaRoutes = require('./routes/tablet/asistencias');
 const tabletHorarioRoutes = require('./routes/tablet/horarios');
 const tabletNotificacionRoutes = require('./routes/tablet/notificaciones');
-// =============================================
+// -----------------------------------
 
 const http = require('http');
 const { Server } = require('socket.io');
 
-// IMPORTAR CONTROLADOR DE WEBSOCKET NOTIFICACIONES
+// Importar controlador de websocket notificaciones
 const NotificacionesWebSocket = require('./controllers/tablet/notificacionesWebSocket');
 
 const app = express();
 app.use(express.json({ limit: '10mb' }));
 const server = http.createServer(app);
 
-//  Lista de orígenes permitidos (local + vercel)
 const whitelist = [
   process.env.BASE_URL
 ].filter(Boolean);
 
+// Configuracion de CORS
 const corsOptions = {
   origin: function (origin, callback) {
     if (!origin) return callback(null, true);
@@ -40,7 +40,7 @@ const corsOptions = {
     if (whitelist.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
-      console.log(`❌ Blocked by CORS: ${origin}`);
+      console.log(`[CORS] Blocked by CORS: ${origin}`);
       callback(new Error('Not allowed by CORS'));
     }
   },
@@ -57,6 +57,9 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
+app.use(express.json());
+
+// Configurar servidor socket.io
 const io = new Server(server, {
   cors: {
     origin: function (origin, callback) {
@@ -71,22 +74,44 @@ const io = new Server(server, {
   }
 });
 
-// Make io available to our controllers
+// Disponibilizar socket.io en la aplicacion
 app.set('io', io);
 app.locals.io = io;
 
 global.io = io;
 
-// Middlewares
+// Cargar modelos y conectar base de datos
 app.use(express.json());
 
-// Carga modelos y conecta BD
 const db = require('./models');
-db.sequelize.authenticate()
-  .then(() => console.log('Conexión con la base de datos exitosa!'))
-  .catch(err => console.error('Error de conexión a la base de datos'));
+const { Sequelize } = require('sequelize');
 
-// ========== RUTAS WEB ==========
+async function initializeDatabase() {
+  try {
+    console.log('[DB] Iniciando autenticacion con la base de datos...');
+    await db.sequelize.authenticate();
+    console.log('[DB] Autenticacion exitosa - conectado a TiDB');
+    
+    console.log('[DB] Sincronizando modelos (sin modificar existentes)...');
+    // sync con alter: false solo crea tablas nuevas, no modifica las existentes
+    await db.sequelize.sync({ alter: false, logging: false });
+    console.log('[DB] Sincronizacion de modelos completada - tablas seguras');
+    
+  } catch (err) {
+    console.error('[DB ERROR] Error de conexion a la base de datos:');
+    console.error('[DB ERROR] Tipo:', err.name);
+    console.error('[DB ERROR] Mensaje:', err.message);
+    console.error('[DB ERROR] Host:', process.env.DB_HOST);
+    console.error('[DB ERROR] Usuario:', process.env.DB_USERNAME);
+    console.error('[DB ERROR] Base de datos:', process.env.DB_DATABASE);
+    console.error('[DB ERROR] Puerto:', process.env.DB_PORT);
+    process.exit(1);
+  }
+}
+
+initializeDatabase();
+
+// --- Rutas web ---
 app.use('/api/auth', authRoutes);
 app.use('/api/empleados', empleadoRoutes);
 app.use('/api/jornadas', jornadaRoutes);
@@ -97,22 +122,22 @@ app.use('/api/qr', qrRoutes);
 app.use('/api/usuarios', usuariosRoutes);
 app.use('/api/calculo-horas', calcularHorasRoutes);
 
-// ========== RUTAS PARA TABLET ==========
+// --- Rutas para tablet ---
 app.use('/api/tablet/empleados', tabletEmpleadoRoutes);
 app.use('/api/tablet/asistencias', tabletAsistenciaRoutes);
 app.use('/api/tablet/horarios', tabletHorarioRoutes);
 app.use('/api/tablet/notificaciones', tabletNotificacionRoutes);
-// =================================================================
+// ---
 
-// Servidor
+// Iniciar servidor
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
   console.log(`Servidor escuchando en puerto ${PORT}`);
 });
 
-// WEBSOCKET HANDLERS - ASISTENCIAS
+// Manejadores de websocket para asistencias
 io.on('connection', (socket) => {
-  console.log('🔌 Cliente conectado a WebSocket:', socket.id);
+  console.log('[WS] Cliente conectado a WebSocket:', socket.id);
 
   // Sala general de asistencias
   socket.on('join_room', (room) => {
@@ -131,7 +156,7 @@ io.on('connection', (socket) => {
   });
 });
 
-// CONFIGURAR WEBSOCKET ESPECÍFICO PARA NOTIFICACIONES
+// Configurar websocket especifico para notificaciones
 NotificacionesWebSocket.setupWebSocket(io);
 
-console.log('✅ WebSocket de notificaciones configurado correctamente');
+console.log('[WS] WebSocket de notificaciones configurado correctamente');
