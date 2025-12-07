@@ -8,6 +8,8 @@ const { verificarToken,soloRH } = require('../middlewares/authMiddleware');
 router.post('/horario-empleado', verificarToken, horarioEmpleadoController.asignarHorario);
 // Ruta para modificar el horario asignado a un empleado
 router.post('/horario-empleado/modificar', verificarToken,soloRH, horarioEmpleadoController.asignarHorario);
+// Ruta para obtener TODOS los horarios sin filtro de área
+router.get('/horario-empleados/todos', verificarToken, horarioEmpleadoController.obtenerTodosLosHorarios);
 // Ruta para obtener todos los horarios de empleados
 router.get('/horario-empleados', verificarToken, horarioEmpleadoController.obtenerHorarios);
 // Ruta para obtener el horario de un empleado específico

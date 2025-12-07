@@ -1,6 +1,19 @@
 import api from './token';
 
-
+export const obtenerTodosLosHorarios = async (params = {}) => {
+  try {
+    const response = await api.get('/horario-empleados/todos', { 
+      params
+    });
+    
+    return response.data;
+  } catch (error) {
+    if (error.response?.status === 403) {
+      throw new Error('No tienes permisos para acceder a los horarios');
+    }
+    throw error;
+  }
+};
 
 export const obtenerHorariosPorArea = async (areaId, params = {}) => {
   try {

@@ -1,15 +1,18 @@
 :root {
-  /* Color scheme simple y profesional */
-  --menu-bg-primary: #2c3e50;
-  --menu-bg-secondary: #34495e;
-  --menu-bg-hover: #3498db;
-  --menu-header-bg: #2c3e50;
+  /* Color scheme simple */
+  --menu-bg-primary: #43a047;
+  --menu-bg-secondary: #388e3c;
+  --menu-bg-hover: #4caf50;
+  --menu-header-bg: #388e3c;
   --menu-text-primary: #ffffff;
-  --menu-text-secondary: #ecf0f1;
-  --menu-text-muted: #95a5a6;
-  --menu-border-color: rgba(255, 255, 255, 0.08);
-  --menu-avatar-bg: #3498db;
-  --menu-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --menu-text-secondary: #ffffff;
+  --menu-text-muted: #e8f5e9;
+  --menu-text-subtle: #ffffff;
+  --menu-border-color: rgba(255, 255, 255, 0.1);
+  --menu-avatar-bg: #66bb6a;
+  --menu-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --menu-item-radius: 4px;
+  --menu-transition: all 0.2s ease;
 }
 
 /* Mobile menu button */
@@ -22,6 +25,8 @@
   color: var(--menu-text-primary);
   border: none;
   box-shadow: var(--menu-shadow);
+  border-radius: 4px;
+  padding: 0.75rem;
 }
 
 /* Desktop sidebar */
@@ -29,52 +34,49 @@
   position: fixed;
   left: 0;
   top: 0;
-  width: 16rem;
+  width: 18rem;
   height: 100vh;
   background: var(--menu-bg-primary);
-  border-right: 1px solid var(--menu-border-color);
+  border: none;
   z-index: 1000;
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
 }
 
 /* User profile header */
 .user-profile-header {
-  padding: 1.5rem 1rem;
+  padding: 1.5rem;
   border-bottom: 1px solid var(--menu-border-color);
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  background: var(--menu-header-bg);
+  background: var(--menu-bg-secondary);
 }
 
 .user-avatar {
   background: var(--menu-avatar-bg);
   color: var(--menu-text-primary);
+  border: none;
   font-weight: 600;
   font-size: 1rem;
-  width: 40px;
-  height: 40px;
 }
 
 .user-name {
   color: var(--menu-text-primary);
   font-weight: 600;
-  font-size: 0.9rem;
-  margin-bottom: 0.15rem;
+  font-size: 0.95rem;
 }
 
 .user-email {
   color: var(--menu-text-muted);
   font-size: 0.8rem;
-  margin-bottom: 0.1rem;
 }
 
 .user-role {
-  color: var(--menu-text-secondary);
-  font-size: 0.7rem;
+  color: var(--menu-text-subtle);
+  font-size: 0.75rem;
   text-transform: uppercase;
-  font-weight: 500;
 }
 
 /* Menu container */
@@ -89,11 +91,11 @@
   padding: 1rem 1.5rem;
   border-top: 1px solid var(--menu-border-color);
   text-align: center;
-  background: var(--menu-bg-primary);
+  background: var(--menu-bg-secondary);
 }
 
 .footer-text {
-  color: var(--menu-text-subtle);
+  color: var(--menu-text-muted);
   font-size: 0.75rem;
 }
 
@@ -112,49 +114,44 @@
   color: var(--menu-text-primary);
 }
 
-/* Dark menu styles - simple y limpio */
+/* Dark menu styles - shared between mobile and desktop */
 .dark-menu *, .dark-menu-mobile * {
   border: none !important;
   outline: none !important;
-  box-shadow: none !important;
 }
 
 .dark-menu .p-panelmenu-header-link,
 .dark-menu-mobile .p-panelmenu-header-link {
-  background-color: transparent !important;
-  color: rgba(255, 255, 255, 0.95) !important;
+  background: var(--menu-bg-secondary) !important;
+  color: var(--menu-text-primary) !important;
   border: none !important;
   padding: 0.75rem 1rem !important;
-  font-weight: 500 !important;
-  font-size: 0.95rem !important;
+  font-weight: 600 !important;
 }
 
 .dark-menu .p-panelmenu-header-link:hover,
 .dark-menu-mobile .p-panelmenu-header-link:hover {
-  background-color: var(--menu-bg-hover) !important;
+  background: var(--menu-bg-secondary) !important;
 }
 
 .dark-menu .p-menuitem-link,
 .dark-menu-mobile .p-menuitem-link {
-  background-color: transparent !important;
-  color: rgba(255, 255, 255, 0.95) !important;
+  background: var(--menu-bg-secondary) !important;
+  color: var(--menu-text-primary) !important;
   border: none !important;
-  margin: 0 !important;
-  padding: 0.65rem 1rem 0.65rem 2.5rem !important;
-  font-size: 0.9rem !important;
+  padding: 0.65rem 1rem 0.65rem 2rem !important;
 }
 
 .dark-menu .p-menuitem-link:hover,
 .dark-menu-mobile .p-menuitem-link:hover {
-  background-color: var(--menu-bg-hover) !important;
-  color: var(--menu-text-primary) !important;
+  background: var(--menu-bg-secondary) !important;
 }
 
 .dark-menu .p-panelmenu-content,
 .dark-menu-mobile .p-panelmenu-content {
-  padding: 0.25rem 0 !important;
+  padding: 0 !important;
   margin: 0 !important;
-  background-color: rgba(0, 0, 0, 0.15) !important;
+  background: var(--menu-bg-primary) !important;
   border: none !important;
 }
 
@@ -162,49 +159,44 @@
 .dark-menu-mobile .p-submenu-list {
   padding: 0 !important;
   margin: 0 !important;
-  background-color: transparent !important;
+  background: transparent !important;
   border: none !important;
 }
 
 .dark-menu .p-panelmenu-panel,
 .dark-menu-mobile .p-panelmenu-panel {
   border: none !important;
-  margin: 0.25rem 0 !important;
+  margin: 0 !important;
   background: transparent !important;
 }
 
-/* Íconos del menú - visibles */
 .dark-menu i,
 .dark-menu-mobile i,
+.dark-menu .p-submenu-icon,
+.dark-menu-mobile .p-submenu-icon,
+.dark-menu .p-menuitem i,
+.dark-menu-mobile .p-menuitem i,
 .dark-menu .p-menuitem-icon,
 .dark-menu-mobile .p-menuitem-icon,
 .dark-menu svg,
 .dark-menu-mobile svg,
-.dark-menu .p-panelmenu-header-link i,
-.dark-menu-mobile .p-panelmenu-header-link i {
-  color: rgba(255, 255, 255, 0.9) !important;
-  font-size: 0.95rem !important;
+.dark-menu .p-menuitem svg,
+.dark-menu-mobile .p-menuitem svg {
+  color: var(--menu-text-primary) !important;
+  fill: var(--menu-text-primary) !important;
+  opacity: 1 !important;
 }
 
-/* Texto del menú - visible */
 .dark-menu .p-menuitem-text,
-.dark-menu-mobile .p-menuitem-text {
-  color: rgba(255, 255, 255, 0.95) !important;
-  font-size: 0.9rem !important;
+.dark-menu-mobile .p-menuitem-text,
+.dark-menu .p-submenu-list .p-menuitem-text,
+.dark-menu-mobile .p-submenu-list .p-menuitem-text {
+  color: var(--menu-text-primary) !important;
 }
 
-/* Hover en íconos y texto */
-.dark-menu .p-menuitem-link:hover i,
-.dark-menu-mobile .p-menuitem-link:hover i,
-.dark-menu .p-panelmenu-header-link:hover i,
-.dark-menu-mobile .p-panelmenu-header-link:hover i {
-  color: #ffffff !important;
-}
 
-.dark-menu .p-menuitem-link:hover .p-menuitem-text,
-.dark-menu-mobile .p-menuitem-link:hover .p-menuitem-text {
-  color: #ffffff !important;
-}
+
+
 
 /* Eliminar bordes específicos de PrimeReact */
 .p-panelmenu .p-panelmenu-content,
@@ -218,15 +210,26 @@
 
 
 
-/* PanelMenu variables - simple */
+/* PanelMenu variables */
 .panel-menu-custom {
   background-color: transparent;
   border: none;
-  --p-panelmenu-header-bg: transparent;
-  --p-panelmenu-header-text-color: var(--menu-text-primary);
+  --p-panelmenu-header-bg: var(--menu-bg-secondary);
+  --p-panelmenu-header-text-color: var(--menu-text-secondary);
   --p-panelmenu-header-border: none;
-  --p-panelmenu-content-bg: var(--menu-bg-secondary);
+  --p-panelmenu-content-bg: var(--menu-bg-primary);
   --p-panelmenu-content-border: none;
-  --p-submenu-content-padding: 0;
+  --p-submenu-content-padding: 2px;
   --p-menuitem-border-bottom: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .desktop-sidebar {
+    width: 16rem;
+  }
+  
+  .user-profile-header {
+    padding: 1.25rem 1rem;
+  }
 }

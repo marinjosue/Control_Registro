@@ -356,10 +356,76 @@ const obtenerHorariosPorArea = async (req, res) => {
   }
 };
 
+const obtenerTodosLosHorarios = async (req, res) => {
+  try {
+    const { fecha_inicio, fecha_fin } = req.query;
+    
+    let whereClause = {};
+
+    // Filtrar por rango de fechas si se proporciona
+    if (fecha_inicio && fecha_fin) {
+      whereClause.fecha_horario = {
+        [require('sequelize').Op.between]: [fecha_inicio, fecha_fin]
+      };
+    } else if (fecha_inicio) {
+      whereClause.fecha_horario = {
+        [require('sequelize').Op.gte]: fecha_inicio
+      };
+    } else if (fecha_fin) {
+      whereClause.fecha_horario = {
+        [require('sequelize').Op.lte]: fecha_fin
+      };
+    }
+
+    const horarios = await HorarioEmpleado.findAll({
+      where: whereClause,
+      include: [
+        {
+          model: Empleado,
+          attributes: ['id_empleado', 'nombres', 'apellidos', 'cedula'],
+          include: [{ model: Area, attributes: ['nombre'] }]
+        },
+        {
+          model: Jornada,
+          attributes: ['nombre_jornada', 'hora_inicio', 'hora_fin']
+        }
+      ],
+      order: [['fecha_horario', 'ASC']]
+    });
+
+    // Formatear la respuesta según el formato deseado
+    const formatoHorarios = horarios.map(horario => ({
+      id_horario: horario.id_horario,
+      empleado_id: horario.Empleado.id_empleado,
+      empleado_nombre: horario.Empleado.nombres,
+      empleado_apellido: horario.Empleado.apellidos,
+      cedula: horario.Empleado.cedula,
+      id_jornada: horario.id_jornada,
+      fecha_horario: horario.fecha_horario,
+      hora_inicio: horario.Jornada ? horario.Jornada.hora_inicio : null,
+      hora_fin: horario.Jornada ? horario.Jornada.hora_fin : null,
+      es_dia_libre: horario.es_dia_libre ? 1 : 0,
+      createdAt: horario.createdAt
+    }));
+
+    res.json({
+      total: formatoHorarios.length,
+      horarios: formatoHorarios
+    });
+  } catch (error) {
+    console.error('Error al obtener todos los horarios:', error);
+    res.status(500).json({ 
+      mensaje: 'Error al obtener horarios',
+      error: error.message 
+    });
+  }
+};
+
 module.exports = {
   asignarHorario,
   obtenerHorarios,
   obtenerHorariosPorArea,
+  obtenerTodosLosHorarios,
   obtenerHorarioEmpleado,
   eliminarHorario
 };

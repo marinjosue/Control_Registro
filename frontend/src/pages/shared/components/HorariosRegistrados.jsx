@@ -8,7 +8,7 @@ import { Toast } from 'primereact/toast';
 import { Toolbar } from 'primereact/toolbar';
 import { Calendar } from 'primereact/calendar';
 
-import { obtenerHorariosPorArea, asignarHorarioIndividual,modificarHorarioEmpleado } from '../../../services/horariosService';
+import { obtenerHorariosPorArea, obtenerTodosLosHorarios, asignarHorarioIndividual,modificarHorarioEmpleado } from '../../../services/horariosService';
 
 import { getAllJornadas } from '../../../services/jornadaService';
 import { exportAsistenciasExcel } from '../../../services/reportesService';
@@ -17,7 +17,7 @@ import SearchInput from './SearchInput';
 import styles from '../styles/HorariosRegistrados.module.css';
 
 const HorariosRegistrados = ({
-    area,
+    area = null,
     empleados = [],
     filtroFechaInicio = null,
     filtroFechaFin = null,
@@ -46,9 +46,7 @@ const HorariosRegistrados = ({
 
     // Cargar horarios cuando cambian los filtros
     useEffect(() => {
-        if (area) {
-            cargarHorarios();
-        }
+        cargarHorarios();
     }, [area, filtroFechaInicioLocal, filtroFechaFinLocal]);
     // Obtener lista de jornadas al montar el componente
     useEffect(() => {
@@ -82,8 +80,10 @@ const HorariosRegistrados = ({
             };
 
             try {
-                // Intentar obtener horarios
-                const response = await obtenerHorariosPorArea(area, params);
+                // Si no hay área específica, obtener todos los horarios
+                const response = area 
+                    ? await obtenerHorariosPorArea(area, params)
+                    : await obtenerTodosLosHorarios(params);
 
                 // Verificar la estructura de la respuesta y extraer los horarios
                 let data = [];
