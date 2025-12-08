@@ -84,6 +84,26 @@ export const CitasProvider = ({ children }) => {
     return franjasHorariasDefault;
   };
 
+  const guardarConfiguracionHorarios = (doctorId, config) => {
+    const key = `config_horarios_${doctorId}`;
+    localStorage.setItem(key, JSON.stringify(config));
+  };
+
+  const obtenerConfiguracionHorarios = (doctorId) => {
+    const key = `config_horarios_${doctorId}`;
+    const stored = localStorage.getItem(key);
+    if (stored) {
+      return JSON.parse(stored);
+    }
+    return {
+      modoConfiguracion: 'estandar',
+      horaInicio: '08:00',
+      horaFin: '18:00',
+      duracionCita: 60,
+      intervaloEntreCitas: 0,
+    };
+  };
+
   // ============ CITAS ============
   const obtenerCitasDoctor = (doctorId) => {
     const citas = citasDB.getCitasByDoctor(doctorId);
@@ -141,8 +161,15 @@ export const CitasProvider = ({ children }) => {
     return { success: false, message: 'Cita no encontrada' };
   };
 
-  const cancelarCita = (citaId) => {
-    return cambiarEstadoCita(citaId, 'cancelada');
+  const cancelarCita = (citaId, motivo = '') => {
+    const cita = citasDB.getCitaById(citaId);
+    if (cita) {
+      cita.estado = 'cancelada';
+      cita.motivoCancelacion = motivo;
+      cita.fechaCancelacion = new Date().toISOString();
+      return { success: true, cita };
+    }
+    return { success: false, message: 'Cita no encontrada' };
   };
 
   const verificarDisponibilidad = (doctorId, fecha, franjaId) => {
@@ -194,6 +221,8 @@ export const CitasProvider = ({ children }) => {
       obtenerHorarioDia,
       actualizarHorarioDoctor,
       obtenerFranjasHorarias,
+      guardarConfiguracionHorarios,
+      obtenerConfiguracionHorarios,
 
       // Citas
       obtenerCitasDoctor,

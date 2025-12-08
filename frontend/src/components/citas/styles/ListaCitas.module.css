@@ -23,4 +23,90 @@
   display: flex;
   gap: 0.5rem;
   justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.actions button {
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+  flex-shrink: 0;
+}
+
+/* Asegurar que los tooltips se vean correctamente */
+:global(.p-tooltip) {
+  white-space: nowrap !important;
+  max-width: none !important;
+}
+
+:global(.p-tooltip .p-tooltip-text) {
+  white-space: nowrap !important;
+  padding: 0.5rem 0.75rem !important;
+  font-size: 0.875rem !important;
+}
+
+.dialogContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.confirmMessage {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: #fef3c7;
+  border-radius: 8px;
+  border-left: 4px solid #f59e0b;
+  margin: 0;
+}
+
+.confirmMessage span {
+  font-size: 1rem;
+  color: #78350f;
+  font-weight: 500;
+}
+
+.citaInfo {
+  background: #f8fafc;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.citaInfo p {
+  margin: 0.5rem 0;
+  color: #475569;
+}
+
+.citaInfo strong {
+  color: #1e293b;
+}
+
+.motivoField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.motivoField label {
+  color: #1e293b;
+  font-size: 0.95rem;
+}
+
+.textarea {
+  width: 100%;
+  border: 2px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 0.75rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: border-color 0.3s;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
 }

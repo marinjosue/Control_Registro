@@ -77,8 +77,47 @@
   margin: 0 auto;
 }
 
+.filtrosCard {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
+}
+
+.filtrosContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: flex-end;
+}
+
+.filtroItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 200px;
+}
+
+.filtroItem label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.dropdown {
+  width: 100%;
+}
+
 @media (max-width: 768px) {
   .statsGrid {
     grid-template-columns: 1fr;
+  }
+
+  .filtrosContainer {
+    flex-direction: column;
+  }
+
+  .filtroItem {
+    width: 100%;
   }
 }

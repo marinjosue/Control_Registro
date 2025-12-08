@@ -301,54 +301,127 @@
   font-size: 0.8rem;
   font-weight: 600;
   border-radius: 6px;
+}
+
 /* Grid de Franjas Horarias */
 .franjasGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 1rem;
-  padding-bottom: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.25rem;
+  padding: 1rem 0;
 }
 
 .franjaCard {
-  background: white;
-  border: 3px solid #e2e8f0;
-  border-radius: 16px;
-  padding: 1.25rem;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.5rem 1rem;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   text-align: center;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.franjaCard::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #e2e8f0;
+  border-radius: 12px 0 0 12px;
+  transition: all 0.3s;
 }
 
 .franjaCard:hover {
   border-color: #6366f1;
-  transform: translateY(-4px) scale(1.05);
-  box-shadow: 0 12px 30px rgba(99, 102, 241, 0.3);
-} transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.2);
+  background: linear-gradient(135deg, #ffffff 0%, #eef2ff 100%);
+}
+
+.franjaCard:hover::before {
+  background: #6366f1;
+  width: 6px;
 }
 
 .franjaCard.selected {
   border-color: #6366f1;
-  background: #f0f4ff;
+  background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.25);
+}
+
+.franjaCard.selected::before {
+  background: #6366f1;
+  width: 6px;
 }
 
 .franjaCard > i {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   color: #6366f1;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 .franjaHora {
-  font-size: 1.2rem;
+  font-size: 1.35rem;
   font-weight: 700;
   color: #1e293b;
+  letter-spacing: -0.5px;
+}
+
+.franjaCard.selected .franjaHora {
+  color: #4338ca;
 }
 
 .franjaHasta {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: #64748b;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
   margin: 0.25rem 0;
+}
+
+.checkIcon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #10b981;
+  color: white;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
+  animation: bounceIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.checkIcon i {
+  font-size: 1rem;
+  color: white !important;
+  margin: 0 !important;
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .noFranjas {
@@ -728,10 +801,26 @@
   }
 
   .doctoresGrid,
-  .fechasGrid,
-  .franjasGrid {
+  .fechasGrid {
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     gap: 0.75rem;
+  }
+
+  .franjasGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .franjaCard {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .franjaHora {
+    font-size: 1.2rem;
+  }
+
+  .franjaCard > i {
+    font-size: 1.5rem;
   }
 
   .successActions {

@@ -195,11 +195,6 @@
   gap: 0.5rem;
 }
 
-.demoCredentials p::before {
-  content: '💡';
-  font-size: 1.2rem;
-}
-
 .demoCredentials ul {
   margin: 0;
   padding-left: 0;

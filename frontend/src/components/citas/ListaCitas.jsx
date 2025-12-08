@@ -8,12 +8,17 @@ import { Button } from 'primereact/button';
 import { Tag } from 'primereact/tag';
 import { Toast } from 'primereact/toast';
 import { confirmDialog } from 'primereact/confirmdialog';
+import { Dialog } from 'primereact/dialog';
+import { InputTextarea } from 'primereact/inputtextarea';
 import styles from './styles/ListaCitas.module.css';
 
 const ListaCitas = ({ doctorId }) => {
   const { obtenerCitasDoctor, cambiarEstadoCita, cancelarCita } = useCitas();
   const [citas, setCitas] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [showCancelDialog, setShowCancelDialog] = useState(false);
+  const [selectedCita, setSelectedCita] = useState(null);
+  const [motivoCancelacion, setMotivoCancelacion] = useState('');
   const toastRef = React.useRef(null);
 
   useEffect(() => {
@@ -68,22 +73,36 @@ const ListaCitas = ({ doctorId }) => {
     });
   };
 
-  const cancelarCitaConfirm = (citaId) => {
-    confirmDialog({
-      message: '¿Está seguro de cancelar esta cita?',
-      header: 'Cancelar Cita',
-      icon: 'pi pi-exclamation-triangle',
-      acceptLabel: 'Sí, cancelar',
-      rejectLabel: 'No',
-      acceptClassName: 'p-button-danger',
-      accept: () => {
-        const result = cancelarCita(citaId);
-        if (result.success) {
-          toastRef.current.show({ severity: 'warn', summary: 'Cancelada', detail: 'Cita cancelada', life: 3000 });
-          cargarCitas();
-        }
-      },
-    });
+  const cancelarCitaConfirm = (cita) => {
+    setSelectedCita(cita);
+    setMotivoCancelacion('');
+    setShowCancelDialog(true);
+  };
+
+  const handleCancelarCita = () => {
+    if (!motivoCancelacion.trim()) {
+      toastRef.current.show({ 
+        severity: 'error', 
+        summary: 'Error', 
+        detail: 'Debe ingresar el motivo de cancelación', 
+        life: 3000 
+      });
+      return;
+    }
+
+    const result = cancelarCita(selectedCita.id, motivoCancelacion);
+    if (result.success) {
+      toastRef.current.show({ 
+        severity: 'warn', 
+        summary: 'Cancelada', 
+        detail: 'Cita cancelada correctamente', 
+        life: 3000 
+      });
+      setShowCancelDialog(false);
+      setSelectedCita(null);
+      setMotivoCancelacion('');
+      cargarCitas();
+    }
   };
 
   const estadoBodyTemplate = (rowData) => {
@@ -119,8 +138,10 @@ const ListaCitas = ({ doctorId }) => {
             rounded
             text
             severity="success"
-            tooltip="Confirmar"
+            tooltip="Confirmar cita"
+            tooltipOptions={{ position: 'left', showDelay: 300 }}
             onClick={() => confirmarCita(rowData.id)}
+            aria-label="Confirmar cita"
           />
         )}
         {rowData.estado === 'confirmada' && (
@@ -129,8 +150,10 @@ const ListaCitas = ({ doctorId }) => {
             rounded
             text
             severity="info"
-            tooltip="Completar"
+            tooltip="Completar cita"
+            tooltipOptions={{ position: 'left', showDelay: 300 }}
             onClick={() => completarCita(rowData.id)}
+            aria-label="Completar cita"
           />
         )}
         {rowData.estado !== 'cancelada' && rowData.estado !== 'completada' && (
@@ -139,8 +162,10 @@ const ListaCitas = ({ doctorId }) => {
             rounded
             text
             severity="danger"
-            tooltip="Cancelar"
-            onClick={() => cancelarCitaConfirm(rowData.id)}
+            tooltip="Cancelar cita"
+            tooltipOptions={{ position: 'left', showDelay: 300 }}
+            onClick={() => cancelarCitaConfirm(rowData)}
+            aria-label="Cancelar cita"
           />
         )}
       </div>
@@ -172,6 +197,65 @@ const ListaCitas = ({ doctorId }) => {
           <Column body={accionesBodyTemplate} header="Acciones" />
         </DataTable>
       </Card>
+
+      <Dialog
+        header="Cancelar Cita"
+        visible={showCancelDialog}
+        style={{ width: '450px' }}
+        onHide={() => {
+          setShowCancelDialog(false);
+          setSelectedCita(null);
+          setMotivoCancelacion('');
+        }}
+        footer={
+          <div>
+            <Button
+              label="Cancelar"
+              icon="pi pi-times"
+              onClick={() => {
+                setShowCancelDialog(false);
+                setSelectedCita(null);
+                setMotivoCancelacion('');
+              }}
+              className="p-button-text"
+            />
+            <Button
+              label="Confirmar Cancelación"
+              icon="pi pi-check"
+              onClick={handleCancelarCita}
+              severity="danger"
+            />
+          </div>
+        }
+      >
+        <div className={styles.dialogContent}>
+          <p className={styles.confirmMessage}>
+            <i className="pi pi-exclamation-triangle" style={{ fontSize: '2rem', color: '#f59e0b' }}></i>
+            <span>¿Está seguro que desea cancelar esta cita?</span>
+          </p>
+          
+          {selectedCita && (
+            <div className={styles.citaInfo}>
+              <p><strong>Paciente:</strong> {selectedCita.paciente.nombre}</p>
+              <p><strong>Fecha:</strong> {new Date(selectedCita.fecha).toLocaleDateString('es-ES')}</p>
+              <p><strong>Hora:</strong> {selectedCita.franja.hora}</p>
+            </div>
+          )}
+
+          <div className={styles.motivoField}>
+            <label htmlFor="motivo"><strong>Motivo de cancelación *</strong></label>
+            <InputTextarea
+              id="motivo"
+              value={motivoCancelacion}
+              onChange={(e) => setMotivoCancelacion(e.target.value)}
+              rows={4}
+              placeholder="Ingrese el motivo por el cual cancela esta cita..."
+              autoResize
+              className={styles.textarea}
+            />
+          </div>
+        </div>
+      </Dialog>
     </div>
   );
 };
