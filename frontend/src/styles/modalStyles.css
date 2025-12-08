@@ -1,4 +1,4 @@
-/* ========== ESTILOS GLOBALES PARA MODALES - SIMPLE Y LIMPIO ========== */
+/* ========== ESTILOS GLOBALES PARA MODALES - TEMA AZUL CONSISTENTE ========== */
 
 /* Fondo del modal (overlay) */
 .p-dialog-mask {
@@ -15,7 +15,7 @@
 
 /* Header del modal */
 .p-dialog-header {
-  background: #3498db;
+  background: var(--primary, #1976d2);
   color: white;
   padding: 1.25rem 1.5rem;
   border-bottom: none;
@@ -48,7 +48,7 @@
 .p-dialog-content {
   padding: 1.5rem;
   background: white;
-  color: #2c3e50;
+  color: var(--text-main, #0d47a1);
 }
 
 /* Footer del modal */
@@ -73,12 +73,12 @@
 
 .p-dialog-footer .p-button-primary,
 .p-dialog-footer .p-button.p-button-primary {
-  background: #3498db;
+  background: var(--primary, #1976d2);
   color: white;
 }
 
 .p-dialog-footer .p-button-primary:hover {
-  background: #2980b9;
+  background: var(--primary-dark, #1565c0);
 }
 
 .p-dialog-footer .p-button-secondary,
@@ -92,11 +92,11 @@
 }
 
 .p-dialog-footer .p-button-text {
-  color: #3498db;
+  color: var(--primary, #1976d2);
 }
 
 .p-dialog-footer .p-button-text:hover {
-  background: rgba(52, 152, 219, 0.1);
+  background: rgba(25, 118, 210, 0.1);
 }
 
 /* Inputs dentro de modales */
@@ -113,14 +113,14 @@
 .p-dialog-content .p-dropdown:focus,
 .p-dialog-content .p-calendar:focus,
 .p-dialog-content .p-inputtextarea:focus {
-  border-color: #3498db;
-  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
+  border-color: var(--primary, #1976d2);
+  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.1);
 }
 
 /* Labels dentro de modales */
 .p-dialog-content label {
   font-weight: 500;
-  color: #2c3e50;
+  color: var(--text-main, #0d47a1);
   margin-bottom: 0.5rem;
   display: block;
   font-size: 0.9rem;
@@ -175,29 +175,29 @@
 
 .p-confirm-dialog-message {
   font-size: 1rem;
-  color: #2c3e50;
+  color: var(--text-main, #0d47a1);
   margin-bottom: 1.25rem;
 }
 
 /* Modal de error */
 .p-dialog-error .p-dialog-header {
-  background: #e74c3c;
+  background: var(--error-text, #b91c1c);
 }
 
 /* Modal de éxito */
 .p-dialog-success .p-dialog-header {
-  background: #2ecc71;
+  background: var(--success-text, #256029);
 }
 
 /* Modal de información */
 .p-dialog-info .p-dialog-header {
-  background: #3498db;
+  background: var(--primary, #1976d2);
 }
 
 /* Mejoras para el modal de cambio de contraseña */
 .password-change-modal .p-dialog-header,
 .profile-edit-modal .p-dialog-header {
-  background: #3498db;
+  background: var(--primary, #1976d2);
 }
 
 /* Icono de ojo para mostrar/ocultar contraseña */

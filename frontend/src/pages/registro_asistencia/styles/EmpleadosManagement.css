@@ -34,7 +34,8 @@
     margin-left: 18rem; 
     padding: 2rem;
     max-width: calc(100% - 18rem);
-    overflow: visible; /* Cambiado de hidden a visible */
+    overflow-x: auto;
+    overflow-y: auto;
 }
 
 /* Contenedor específico para la tabla de empleados */
@@ -43,7 +44,9 @@
     border-radius: 6px;
     padding: 1rem;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    overflow: visible !important;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    width: 100%;
 }
 
 /* Estilos para mejorar la visualización de la tabla */
@@ -55,11 +58,14 @@
 }
 
 .empleados-management .p-datatable {
-    overflow-x: auto; /* Permite que la tabla tenga scroll horizontal */
+    overflow-x: auto !important;
+    width: 100% !important;
 }
 
 .empleados-management .p-datatable-wrapper {
-    overflow-x: auto; /* Asegura que el contenedor de la tabla permita scroll */
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    width: 100% !important;
 }
 
 .empleados-management .p-toolbar {

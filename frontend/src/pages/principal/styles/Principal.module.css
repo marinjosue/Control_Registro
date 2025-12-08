@@ -63,7 +63,7 @@
 }
 
 .navMenu li a:hover {
-  color: #667eea;
+  color: #1976d2;
 }
 
 .navMenu li a::after {
@@ -73,7 +73,7 @@
   height: 2px;
   bottom: -5px;
   left: 0;
-  background-color: #667eea;
+  background-color: #1976d2;
   transition: width 0.3s ease;
 }
 
@@ -82,7 +82,7 @@
 }
 
 .loginBtn {
-  background: #667eea;
+  background: #1976d2;
   color: white;
   border: none;
   padding: 0.75rem 1.8rem;
@@ -94,16 +94,16 @@
 }
 
 .loginBtn:hover {
-  background: #5568d3;
+  background: #1565c0;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 6px 20px rgba(25, 118, 210, 0.3);
 }
 
 /* ========== Hero Section ========== */
 .hero {
   position: relative;
   height: 600px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -165,7 +165,7 @@
 
 .btnPrimary {
   background: white;
-  color: #667eea;
+  color: #1976d2;
 }
 
 .btnPrimary:hover {
@@ -326,7 +326,7 @@
 }
 
 .btnAbout {
-  background: #667eea;
+  background: #1976d2;
   color: white;
   border: none;
   padding: 1rem 2.5rem;
@@ -340,9 +340,9 @@
 }
 
 .btnAbout:hover {
-  background: #5568d3;
+  background: #1565c0;
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 8px 25px rgba(25, 118, 210, 0.3);
 }
 
 .aboutImage {
@@ -354,12 +354,12 @@
 .imagePlaceholder {
   width: 100%;
   height: 400px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
   border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 10px 40px rgba(25, 118, 210, 0.3);
 }
 
 .placeholderIcon {
@@ -429,7 +429,7 @@
 }
 
 .contactCta {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
   padding: 3rem;
   border-radius: 20px;
   color: white;
@@ -438,7 +438,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 10px 40px rgba(25, 118, 210, 0.3);
 }
 
 .contactCta h3 {
@@ -455,7 +455,7 @@
 
 .btnContact {
   background: white;
-  color: #667eea;
+  color: #1976d2;
   border: none;
   padding: 1rem 2.5rem;
   border-radius: 30px;
@@ -513,7 +513,7 @@
 }
 
 .footerSection ul li a:hover {
-  color: #667eea;
+  color: #1976d2;
 }
 
 .socialLinks {
@@ -529,7 +529,7 @@
 }
 
 .socialLinks a:hover {
-  color: #667eea;
+  color: #1976d2;
 }
 
 .footerBottom {

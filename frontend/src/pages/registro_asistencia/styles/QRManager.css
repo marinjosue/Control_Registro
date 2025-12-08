@@ -1,19 +1,15 @@
-.qr-layout {
+.rh-dashboard-layout {
   display: flex;
   min-height: 100vh;
-  background: #f8f9fa;
+  background: #f0f2f5;
 }
 
-.qr-main-content {
+.rh-dashboard-layout .rh-dashboard-content {
   flex: 1;
   padding: 2rem;
-  margin-left: 18rem; /* Ajuste para menú lateral fijo */
-}
-
-.qr-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-left: 18rem;
+  width: calc(100% - 18rem);
+  overflow-x: hidden;
 }
 
 .qr-header {
@@ -56,14 +52,14 @@
 }
 
 .qr-tab:hover {
-  background: #f3f4f6;
-  color: #1a56db;
+  background: #e3f2fd;
+  color: #1976d2;
 }
 
 .qr-tab.active {
-  color: #1a56db;
-  border-bottom-color: #1a56db;
-  background: #f3f4f6;
+  color: #1976d2;
+  border-bottom-color: #1976d2;
+  background: #f0f9ff;
 }
 
 .qr-error {
@@ -91,12 +87,12 @@
 }
 
 .qr-info {
-  background: #f0f9ff;
-  color: #0369a1;
+  background: #e3f2fd;
+  color: #1565c0;
   padding: 15px;
   border-radius: 8px;
   margin-bottom: 20px;
-  border: 1px solid #bae6fd;
+  border: 1px solid #90caf9;
   text-align: center;
   font-weight: 500;
   box-shadow: 0 1px 3px rgba(0,0,0,0.05);
@@ -136,8 +132,8 @@
 
 .qr-search-input:focus {
   outline: none;
-  border-color: #1a56db;
-  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+  border-color: #1976d2;
+  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.1);
 }
 
 .qr-selector {
@@ -158,8 +154,8 @@
 
 .qr-select:focus {
   outline: none;
-  border-color: #1a56db;
-  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+  border-color: #1976d2;
+  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.1);
 }
 
 .qr-employee-list {
@@ -205,7 +201,7 @@
 .qr-checkbox-item input[type="checkbox"] {
   width: 16px;
   height: 16px;
-  accent-color: #1a56db;
+  accent-color: #1976d2;
 }
 
 .qr-actions {
@@ -217,16 +213,18 @@
 .qr-btn {
   padding: 12px 24px;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 0.95rem;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  gap: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .qr-btn:disabled {
@@ -235,13 +233,14 @@
 }
 
 .qr-btn-primary {
-  background: #1a56db;
+  background: #1976d2;
   color: white;
 }
 
 .qr-btn-primary:hover:not(:disabled) {
-  background: #1e429f;
-  transform: translateY(-1px);
+  background: #1565c0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3);
 }
 
 .qr-btn-secondary {
@@ -303,7 +302,7 @@
 }
 
 .qr-info h3 {
-  color: #1a56db;
+  color: #1976d2;
   margin: 0 0 15px 0;
   font-size: 1.3rem;
   font-weight: 600;
@@ -482,57 +481,85 @@
   flex-wrap: wrap;
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
-  .rh-dashboard-content {
+  .rh-dashboard-layout {
+    flex-direction: column;
+  }
+
+  .rh-dashboard-layout .rh-dashboard-content {
     margin-left: 0;
     padding: 1rem;
+    width: 100%;
+    overflow-x: hidden;
   }
   
-  .qr-main-content {
-    margin-left: 0;
-    padding: 1rem;
+  .qr-header {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
   }
-  
-  .qr-container {
-    padding: 10px;
+
+  .qr-header h1 {
+    font-size: 1.5rem;
   }
-  
-  .qr-multiple-header {
+
+  .qr-header p {
+    font-size: 0.9rem;
+  }
+
+  .qr-tabs {
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+
+  .qr-tab {
+    border-bottom: none !important;
+    border-right: 3px solid transparent;
+    padding: 12px 15px;
+  }
+
+  .qr-tab.active {
+    border-right-color: #1976d2;
+    border-bottom: none;
+  }
+
+  .qr-controls {
     flex-direction: column;
     gap: 15px;
-    text-align: center;
+    margin-bottom: 20px;
+    padding: 15px;
   }
-  
-  .qr-summary {
-    justify-content: center;
+
+  .qr-content {
+    min-height: 300px;
   }
-  
-  .qr-grid {
-    grid-template-columns: 1fr;
-  }
-  
+
   .qr-actions {
     flex-direction: column;
   }
-  
+
   .qr-btn {
     width: 100%;
-    justify-content: center;
   }
-  
-  .qr-card-actions {
-    flex-direction: column;
+}
+
+@media (max-width: 480px) {
+  .rh-dashboard-layout .rh-dashboard-content {
+    padding: 0.75rem;
   }
-  
-  .qr-multiple-actions {
-    flex-direction: column;
-    width: 100%;
+
+  .qr-header h1 {
+    font-size: 1.2rem;
   }
-  
-  .qr-multiple-header {
-    flex-direction: column;
-    gap: 15px;
-    text-align: center;
+
+  .qr-controls {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .qr-tab {
+    padding: 10px;
+    font-size: 0.9rem;
   }
 }
 

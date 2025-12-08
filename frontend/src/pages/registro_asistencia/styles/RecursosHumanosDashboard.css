@@ -1,3 +1,5 @@
+/* ========== RECURSOSHUMANOS DASHBOARD - TEMA AZUL CONSISTENTE ========== */
+
 /* Layout principal */
 .rh-dashboard-layout {
     display: flex;
@@ -62,7 +64,7 @@
     margin: 0.5rem 0 0;
 }
 
-/* Tarjetas estadísticas */
+/* ========== TARJETAS ESTADÍSTICAS ========== */
 .rh-stats-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -72,19 +74,20 @@
 }
 
 .stats-card {
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
     overflow: hidden;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background: white;
 }
 
 .stats-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(25, 118, 210, 0.15);
 }
 
 .stats-card .p-card-body {
-    padding: 1rem;
+    padding: 1.5rem;
 }
 
 .stats-card-content {
@@ -97,10 +100,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
-    height: 48px;
+    width: 56px;
+    height: 56px;
     border-radius: 12px;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
+    background: linear-gradient(135deg, var(--primary, #1976d2) 0%, var(--secondary, #42a5f5) 100%);
+    color: white;
 }
 
 .stats-data h3 {
@@ -116,7 +121,7 @@
     font-size: 0.875rem;
 }
 
-/* SECCIÓN DE GRÁFICOS - ESTRUCTURA LIMPIA */
+/* ========== SECCIÓN DE GRÁFICOS ========== */
 .rh-dashboard-charts {
     display: flex;
     flex-direction: column;
@@ -125,7 +130,6 @@
     width: 100%;
 }
 
-/* Primera fila: gráfico completo */
 .chart-row-full {
     display: flex;
     justify-content: center;
@@ -134,7 +138,6 @@
     margin-bottom: 2rem;
 }
 
-/* Segunda fila: dos gráficos */
 .chart-row-half {
     display: flex;
     width: 100%;
@@ -142,31 +145,34 @@
 }
 
 .chart-card {
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     flex: 1;
     min-width: 0;
     width: 100%;
     margin: 0 auto;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .chart-container {
     width: 100%;
-    height: 250px;
+    height: 320px;
     position: relative;
     overflow: hidden;
-    min-height: 320px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* Leyenda del gráfico */
+/* ========== LEYENDA DEL GRÁFICO ========== */
 .chart-legend-custom {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 1.5rem;
     margin-top: 1rem;
+    padding: 1rem;
 }
 
 .legend-item {
@@ -183,7 +189,7 @@
 }
 
 .legend-color-puntual {
-    background: #22C55E;
+    background: var(--success-text, #256029);
 }
 
 .legend-color-tardanza {
@@ -191,14 +197,15 @@
 }
 
 .legend-color-ausente {
-    background: #EF4444;
+    background: var(--error-text, #b91c1c);
 }
 
 .legend-label {
     font-size: 14px;
+    font-weight: 500;
 }
 
-/* SECCIÓN DE TABLAS */
+/* ========== SECCIÓN DE TABLAS ========== */
 .rh-dashboard-tables {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
@@ -208,23 +215,21 @@
 }
 
 .table-card {
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .table-card .p-card-title {
     font-size: 1rem;
     color: #4b5563;
     font-weight: 600;
-    padding-bottom: 0.5rem;
+    padding: 1rem;
     border-bottom: 1px solid #e5e7eb;
 }
 
 .table-card .p-card-body {
-    padding: 0.75rem;
-    overflow: hidden;
-}
-
-.table-card .p-card-content {
     padding: 0;
     overflow: hidden;
 }
@@ -234,8 +239,7 @@
     border: none;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    min-width: 700px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
 }
 
@@ -281,7 +285,7 @@
     background: #f1f5f9;
 }
 
-/* ESTILOS RESPONSIVOS */
+/* ========== RESPONSIVE ========== */
 @media (max-width: 1200px) {
     .rh-stats-cards {
         grid-template-columns: repeat(2, 1fr);
@@ -298,8 +302,12 @@
         gap: 1.5rem;
     }
     
+    .rh-dashboard-charts {
+        grid-template-columns: 1fr;
+    }
+    
     .chart-container {
-        height: 220px;
+        height: 250px;
     }
 }
 
@@ -315,12 +323,47 @@
         gap: 0.75rem;
     }
     
-    .chart-container {
-        height: 200px;
+    .rh-dashboard-charts {
+        flex-direction: column;
+        gap: 1.5rem;
     }
     
-    /* Ajustes de columnas para móviles */
-    .col-hora, .col-hora-salida {
+    .chart-row-half,
+    .chart-row-full {
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+        width: 100% !important;
+    }
+    
+    .chart-card {
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+    
+    .chart-container {
+        height: 220px;
+        min-width: 0;
+    }
+    
+    .dashboard-table {
+        min-width: 700px;
+        width: auto;
+    }
+    
+    .dashboard-table-container {
+        overflow-x: auto !important;
+        width: 100%;
+        max-width: 100vw;
+    }
+    
+    .dashboard-table .p-datatable-thead > tr > th,
+    .dashboard-table .p-datatable-tbody > tr > td {
+        padding: 0.5rem 0.25rem;
+        font-size: 0.8rem;
+    }
+    
+    .col-hora, 
+    .col-hora-salida {
         width: 60px !important;
         min-width: 60px !important;
     }
@@ -333,19 +376,6 @@
     .col-estado {
         width: 90px !important;
         min-width: 90px !important;
-    }
-    
-    .dashboard-table .p-datatable-thead > tr > th,
-    .dashboard-table .p-datatable-tbody > tr > td {
-        padding: 0.5rem 0.25rem;
-        font-size: 0.8rem;
-    }
-    
-    .chart-legend-custom {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.75rem;
     }
 }
 
@@ -358,256 +388,5 @@
         font-size: 1.25rem;
     }
 }
-    .rh-dashboard-charts {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .rh-dashboard-tables {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    
-    .dashboard-table .p-datatable-thead > tr > th,
-    .dashboard-table .p-datatable-tbody > tr > td {
-        padding: 0.75rem 0.5rem;
-        font-size: 0.8rem;
-    }
 
-@media (max-width: 992px) {
-    .modules-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .rh-dashboard-charts {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 768px) {
-    .rh-dashboard-content {
-        margin-left: 0;
-        padding: 1rem;
-        max-width: 100%;
-    }
-    
-    .rh-stats-cards {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0.75rem;
-    }
-    
-    .rh-dashboard-charts {
-        grid-template-columns: 1fr;
-    }
-    
-    .chart-card {
-        overflow: hidden;
-    }
-    
-    .chart-container {
-        height: 220px;
-    }
-}
-
-/* NUEVO: Forzar los gráficos a estar uno debajo del otro en pantallas pequeñas */
-@media (max-width: 768px) {
-    .rh-dashboard-charts {
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-    .rh-dashboard-charts > div {
-        flex-direction: column !important;
-        gap: 1.5rem !important;
-    }
-    .chart-card {
-        width: 100% !important;
-        min-width: 0 !important;
-        max-width: 100% !important;
-    }
-    .chart-container {
-        height: 200px;
-        min-width: 0;
-    }
-}
-
-/* Ajuste para que los gráficos y tablas sean 100% ancho y no se pierdan datos en responsive */
-@media (max-width: 992px) {
-    .rh-dashboard-charts .chart-row-half,
-    .rh-dashboard-charts .chart-row-full,
-    .rh-dashboard-charts > div {
-        flex-direction: column !important;
-        gap: 1.5rem !important;
-        width: 100% !important;
-    }
-    .chart-card {
-        width: 100% !important;
-        min-width: 0 !important;
-        max-width: 100% !important;
-    }
-    .chart-container {
-        width: 100% !important;
-        min-width: 0 !important;
-        height: 220px;
-    }
-}
-
-/* Mejora para que la tabla sea completamente visible en pantallas pequeñas */
-@media (max-width: 768px) {
-    .dashboard-table {
-        min-width: 760px; /* Aumentar para asegurar que todas las columnas sean visibles */
-        width: auto; /* Permitir que la tabla sea más ancha que su contenedor */
-    }
-    
-    .dashboard-table-container {
-        overflow-x: auto !important;
-        -webkit-overflow-scrolling: touch;
-        width: 100%;
-        max-width: 100vw;
-    }
-    
-    /* Reducir el padding para que más columnas quepan */
-    .dashboard-table .p-datatable-thead > tr > th,
-    .dashboard-table .p-datatable-tbody > tr > td {
-        padding: 0.5rem 0.25rem;
-        font-size: 0.8rem;
-    }
-    
-    /* Hacer que las columnas de hora sean más estrechas */
-    .col-hora {
-        width: 60px !important;
-        min-width: 60px !important;
-    }
-    
-    .col-hora-salida {
-        width: 60px !important;
-        min-width: 60px !important;
-    }
-    
-    /* Ajustar la columna de estado */
-    .col-estado {
-        width: 90px !important;
-        min-width: 90px !important;
-    }
-    
-    /* Ajustar la columna de horas trabajadas */
-    .col-horas-trabajadas {
-        width: 50px !important;
-        min-width: 50px !important;
-    }
-}
-
-/* Asegurar que el scroll sea siempre visible en contenedores de tablas */
-.scrollable-table {
-    overflow-x: auto !important;
-    width: 100%;
-}
-
-/* Mejora para que la columna "Salida" no se oculte en pantallas pequeñas */
-@media (max-width: 768px) {
-    .dashboard-table {
-        min-width: 700px; /* Aumenta el ancho mínimo para mostrar todas las columnas */
-    }
-    .dashboard-table-container {
-        overflow-x: auto !important;
-        width: 100%;
-        min-width: 0;
-    }
-    .dashboard-table .p-datatable-wrapper {
-        overflow-x: auto !important;
-        width: 100%;
-        min-width: 0;
-    }
-    /* Opcional: reduce el padding para que quepan más columnas */
-    .dashboard-table .p-datatable-thead > tr > th,
-    .dashboard-table .p-datatable-tbody > tr > td {
-        padding: 0.5rem 0.3rem;
-        font-size: 0.85rem;
-    }
-}
-
-/* Estilos para la leyenda de los gráficos */
-.chart-legend-custom {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-top: 1rem;
-}
-
-.legend-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.legend-color {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    border-radius: 4px;
-}
-
-.legend-color-puntual {
-    background: #22C55E;
-}
-
-.legend-color-tardanza {
-    background: #F59E0B;
-}
-
-.legend-color-ausente {
-    background: #EF4444;
-}
-
-.legend-label {
-    font-size: 14px;
-}
-
-/* Estilos para la leyenda de los gráficos */
-.chart-legend-custom {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-top: 1rem;
-}
-
-.legend-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.legend-color {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    border-radius: 4px;
-}
-
-.legend-color-puntual {
-    background: #22C55E;
-}
-
-.legend-color-tardanza {
-    background: #F59E0B;
-}
-
-.legend-color-ausente {
-    background: #EF4444;
-}
-
-.legend-label {
-    font-size: 14px;
-}
-
-/* Para pantallas pequeñas, fuerza el ancho mínimo de la tabla */
-@media (max-width: 768px) {
-    .dashboard-table {
-        min-width: 700px; /* Ajusta según tus columnas */
-        width: auto;
-    }
-    .dashboard-table-container {
-        overflow-x: auto !important;
-        width: 100%;
-        max-width: 100vw;
-    }
-}
 

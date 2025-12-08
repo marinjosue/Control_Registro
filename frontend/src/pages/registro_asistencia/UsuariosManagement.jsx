@@ -302,14 +302,16 @@ const UsuariosManagement = () => {
                             globalFilter={globalFilter}
                             header={header}
                             loading={loading}
-                            responsiveLayout="scroll"
+                            responsiveLayout="stack"
                             className="responsive-datatable"
+                            scrollable
+                            scrollHeight="auto"
                         >
-                            <Column selectionMode="multiple" exportable={false}></Column>
-                            <Column field="nombre_usuario" header="Usuario" sortable style={{ minWidth: '12rem' }}></Column>
-                            <Column field="correo" header="Email" sortable style={{ minWidth: '14rem' }}></Column>
-                            <Column field="rol" header="Rol" sortable style={{ minWidth: '10rem' }}></Column>
-                            <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '8rem' }}></Column>
+                            <Column selectionMode="multiple" exportable={false} style={{ width: '50px' }}></Column>
+                            <Column field="nombre_usuario" header="Usuario" sortable style={{ width: '200px' }}></Column>
+                            <Column field="correo" header="Email" sortable style={{ width: '250px' }}></Column>
+                            <Column field="rol" header="Rol" sortable style={{ width: '150px' }}></Column>
+                            <Column body={actionBodyTemplate} exportable={false} style={{ width: '120px' }}></Column>
                         </DataTable>
                     </div>
                 </div>
