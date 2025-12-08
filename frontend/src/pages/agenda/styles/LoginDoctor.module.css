@@ -1,0 +1,299 @@
+.loginContainer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.loginContainer::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: drift 20s linear infinite;
+}
+
+@keyframes drift {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(50px, 50px);
+  }
+}
+
+.loginCard {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25), 
+              0 0 0 1px rgba(255, 255, 255, 0.1);
+  padding: 3rem;
+  width: 100%;
+  max-width: 480px;
+  animation: slideIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.loginHeader {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.loginHeader i {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white !important;
+  font-size: 2.5rem !important;
+  margin-bottom: 1rem;
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+.loginHeader h1 {
+  color: #1e293b;
+  font-size: 2.2rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.loginHeader p {
+  color: #64748b;
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.formGroup label {
+  color: #1e293b;
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.formGroup label::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 2px;
+}
+
+.formGroup :global(.p-inputtext),
+.formGroup :global(.p-password) {
+  font-size: 1rem;
+}
+
+.formGroup :global(.p-inputtext) {
+  padding: 0.875rem 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  transition: all 0.3s;
+  font-size: 1rem;
+}
+
+.formGroup :global(.p-inputtext:hover) {
+  border-color: #cbd5e1;
+}
+
+.formGroup :global(.p-inputtext:focus) {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.formGroup :global(.p-password) {
+  width: 100%;
+}
+
+.formGroup :global(.p-password input) {
+  padding: 0.875rem 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  transition: all 0.3s;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.formGroup :global(.p-password input:hover) {
+  border-color: #cbd5e1;
+}
+
+.formGroup :global(.p-password input:focus) {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.errorMessage {
+  width: 100%;
+  margin-bottom: 0;
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
+
+.demoCredentials {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.25rem;
+  font-size: 0.9rem;
+}
+
+.demoCredentials p {
+  margin: 0 0 0.75rem 0;
+  color: #475569;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.demoCredentials p::before {
+  content: '💡';
+  font-size: 1.2rem;
+}
+
+.demoCredentials ul {
+  margin: 0;
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.demoCredentials li {
+  color: #64748b;
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.demoCredentials li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: #667eea;
+  font-weight: bold;
+}
+
+.demoCredentials code {
+  background: #e0e7ff;
+  color: #4f46e5;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.formActions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.formActions :global(.p-button) {
+  flex: 1;
+  padding: 0.875rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  transition: all 0.3s;
+}
+
+.formActions :global(.p-button-primary) {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.formActions :global(.p-button-primary:hover) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+}
+
+.formActions :global(.p-button-secondary) {
+  background: #f1f5f9;
+  border: 2px solid #e2e8f0;
+  color: #475569;
+}
+
+.formActions :global(.p-button-secondary:hover) {
+  background: #e2e8f0;
+  border-color: #cbd5e1;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .loginContainer {
+    padding: 1rem;
+  }
+
+  .loginCard {
+    padding: 2rem 1.5rem;
+    border-radius: 20px;
+  }
+
+  .loginHeader h1 {
+    font-size: 1.75rem;
+  }
+
+  .loginHeader i {
+    width: 70px;
+    height: 70px;
+    font-size: 2rem !important;
+  }
+
+  .formActions {
+    flex-direction: column;
+  }
+
+  .formActions button {
+    width: 100%;
+  }
+}

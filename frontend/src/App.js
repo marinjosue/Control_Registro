@@ -7,14 +7,17 @@ import 'primeflex/primeflex.css';
 import { ConfirmDialog } from 'primereact/confirmdialog';
 import AppRoutes from './routes/AppRoutes';
 import { AuthProvider } from './context/AuthContext';
+import { CitasProvider } from './context/CitasContext';
 
 function App() {
   return (
     <AuthProvider>
-      <BrowserRouter>
-        <AppRoutes />
-        <ConfirmDialog />
-      </BrowserRouter>
+      <CitasProvider>
+        <BrowserRouter>
+          <AppRoutes />
+          <ConfirmDialog />
+        </BrowserRouter>
+      </CitasProvider>
     </AuthProvider>
   );
 }

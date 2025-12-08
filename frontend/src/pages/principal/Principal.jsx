@@ -20,9 +20,14 @@ const Principal = () => {
             <li><a href="#productos">Productos</a></li>
             <li><a href="#contacto">Contacto</a></li>
           </ul>
-          <button onClick={() => navigate('/login')} className={styles.loginBtn}>
-            Acceso RH
-          </button>
+          <div style={{ display: 'flex', gap: '0.5rem' }}>
+            <button onClick={() => navigate('/agenda/login-doctor')} className={styles.loginBtn}>
+              Acceso Médicos
+            </button>
+            <button onClick={() => navigate('/login')} className={styles.loginBtn}>
+              Acceso RH
+            </button>
+          </div>
         </nav>
       </header>
 

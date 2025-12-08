@@ -233,12 +233,9 @@ const Agenda = () => {
         </div>
       </div>
 
-      {/* Carrusel de pasos */}
-      <div className={styles.carouselContainer}>
-        <div className={styles.carouselTrack} style={{ transform: `translateX(-${(paso - 1) * 100}%)` }}>
-          
-          {/* PASO 1: Seleccionar Doctor */}
-          <Card className={styles.pasoCard}>
+      {/* PASO 1: Seleccionar Doctor */}
+      {paso === 1 && (
+        <Card className={styles.pasoCard}>
           <div>
             <h2>
               <i className="pi pi-user-md"></i> Paso 1: Seleccione Especialidad
@@ -272,20 +269,24 @@ const Agenda = () => {
             </div>
           </div>
         </Card>
+      )}
 
-          {/* PASO 2: Seleccionar Fecha */}
-          <Card className={styles.pasoCard}>
-            <div>
-              <h2>
-                <i className="pi pi-calendar"></i> Paso 2: Seleccione Fecha
-              </h2>
-              {doctorSel && <p className={styles.subtitle}>Disponibilidad de {doctorSel.nombre}</p>}
-              <div className={styles.fechasGrid}>
-                {getSemanaDates().map((d) => {
-                  const dateStr = d.toISOString().split('T')[0];
-                  const horario = doctorSel ? obtenerHorarioDia(doctorSel.id, dateStr) : null;
-                  const tiene = horario && horario.franjasDisponibles.length > 0;
-                  const isSelected = fechaSel && fechaSel.toISOString().split('T')[0] === dateStr;                return (
+      {/* PASO 2: Seleccionar Fecha */}
+      {paso === 2 && doctorSel && (
+        <Card className={styles.pasoCard}>
+          <div>
+            <h2>
+              <i className="pi pi-calendar"></i> Paso 2: Seleccione Fecha
+            </h2>
+            <p className={styles.subtitle}>Disponibilidad de {doctorSel.nombre}</p>
+            <div className={styles.fechasGrid}>
+              {getSemanaDates().map((d) => {
+                const dateStr = d.toISOString().split('T')[0];
+                const horario = obtenerHorarioDia(doctorSel.id, dateStr);
+                const tiene = horario && horario.franjasDisponibles.length > 0;
+                const isSelected = fechaSel && fechaSel.toISOString().split('T')[0] === dateStr;
+
+                return (
                   <div
                     key={dateStr}
                     className={`${styles.fechaCard} ${!tiene ? styles.disabled : ''} ${isSelected ? styles.selected : ''}`}
@@ -330,124 +331,119 @@ const Agenda = () => {
             </div>
           </div>
         </Card>
+      )}
 
-          {/* PASO 3: Seleccionar Hora */}
-          <Card className={styles.pasoCard}>
-            <div>
-              <h2>
-                <i className="pi pi-clock"></i> Paso 3: Seleccione Hora
-              </h2>
-              {fechaSel && (
-                <p className={styles.subtitle}>
-                  Franjas disponibles para el {fechaSel.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' })}
-                </p>
-              )}
-              {franjasDisp.length === 0 ? (
-                <div className={styles.noFranjas}>
-                  <i className="pi pi-info-circle"></i>
-                  <p>No hay franjas disponibles para esta fecha</p>
-                </div>
-              ) : (
-                <div className={styles.franjasGrid}>
-                  {franjasDisp.map((f) => (
-                    <div
-                      key={f.id}
-                      className={`${styles.franjaCard} ${franjaSel?.id === f.id ? styles.selected : ''}`}
-                      onClick={() => {
-                        setFranjaSel(f);
-                        setPaso(4);
-                      }}
-                    >
-                      <i className="pi pi-clock"></i>
-                      <div className={styles.franjaHora}>{f.hora}</div>
-                      <div className={styles.franjaHasta}>hasta</div>
-                      <div className={styles.franjaHora}>{f.horaFin}</div>
-                      {franjaSel?.id === f.id && (
-                        <div className={styles.checkIcon}>
-                          <i className="pi pi-check-circle"></i>
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              )}
-              <div style={{ marginTop: '1.5rem' }}>
-                <Button
-                  label="Volver"
-                  icon="pi pi-arrow-left"
-                  severity="secondary"
-                  onClick={() => setPaso(2)}
-                />
+      {/* PASO 3: Seleccionar Hora */}
+      {paso === 3 && fechaSel && (
+        <Card className={styles.pasoCard}>
+          <div>
+            <h2>
+              <i className="pi pi-clock"></i> Paso 3: Seleccione Hora
+            </h2>
+            <p className={styles.subtitle}>
+              Franjas disponibles para el {fechaSel.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' })}
+            </p>
+            {franjasDisp.length === 0 ? (
+              <div className={styles.noFranjas}>
+                <i className="pi pi-info-circle"></i>
+                <p>No hay franjas disponibles para esta fecha</p>
+              </div>
+            ) : (
+              <div className={styles.franjasGrid}>
+                {franjasDisp.map((f) => (
+                  <div
+                    key={f.id}
+                    className={`${styles.franjaCard} ${franjaSel?.id === f.id ? styles.selected : ''}`}
+                    onClick={() => {
+                      setFranjaSel(f);
+                      setPaso(4);
+                  >
+                    <i className="pi pi-clock"></i>
+                    <div className={styles.franjaHora}>{f.hora}</div>
+                    <div className={styles.franjaHasta}>hasta</div>
+                    <div className={styles.franjaHora}>{f.horaFin}</div>
+                    {franjaSel?.id === f.id && (
+                      <div className={styles.checkIcon}>
+                        <i className="pi pi-check-circle"></i>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+            <div style={{ marginTop: '1.5rem' }}>
+              <Button
+                label="Volver"
+                icon="pi pi-arrow-left"
+                severity="secondary"
+                onClick={() => setPaso(2)}
+              />
+            </div>
+          </div>
+        </Card>
+      )}
+
+      {/* PASO 4: Confirmar */}
+      {paso === 4 && franjaSel && (
+        <Card className={styles.pasoCard}>
+          <div>
+            <h2>
+              <i className="pi pi-check"></i> Paso 4: Confirmar Cita
+            </h2>
+            <div className={styles.resumenCita}>
+              <div className={styles.resumenItem}>
+                <strong>Doctor:</strong>
+                <span>{doctorSel.nombre} - {doctorSel.especialidad}</span>
+              </div>
+              <div className={styles.resumenItem}>
+                <strong>Fecha:</strong>
+                <span>
+                  {fechaSel.toLocaleDateString('es-ES', {
+                    weekday: 'long',
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric',
+                  })}
+                </span>
+              </div>
+              <div className={styles.resumenItem}>
+                <strong>Hora:</strong>
+                <span>{franjaSel.hora} - {franjaSel.horaFin}</span>
               </div>
             </div>
-          </Card>
 
-          {/* PASO 4: Confirmar */}
-          <Card className={styles.pasoCard}>
-            <div>
-              <h2>
-                <i className="pi pi-check"></i> Paso 4: Confirmar Cita
-              </h2>
-              {doctorSel && fechaSel && franjaSel && (
-                <>
-                  <div className={styles.resumenCita}>
-                    <div className={styles.resumenItem}>
-                      <strong>Doctor:</strong>
-                      <span>{doctorSel.nombre} - {doctorSel.especialidad}</span>
-                    </div>
-                    <div className={styles.resumenItem}>
-                      <strong>Fecha:</strong>
-                      <span>
-                        {fechaSel.toLocaleDateString('es-ES', {
-                          weekday: 'long',
-                          day: 'numeric',
-                          month: 'long',
-                          year: 'numeric',
-                        })}
-                      </span>
-                    </div>
-                    <div className={styles.resumenItem}>
-                      <strong>Hora:</strong>
-                      <span>{franjaSel.hora} - {franjaSel.horaFin}</span>
-                    </div>
-                  </div>
-
-                  <div className={styles.motivoSection}>
-                    <label htmlFor="motivo">Motivo de la consulta (opcional)</label>
-                    <InputTextarea
-                      id="motivo"
-                      value={motivo}
-                      onChange={(e) => setMotivo(e.target.value)}
-                      placeholder="Ej: Consulta de rinoplastia, consulta inicial, control postoperatorio..."
-                      rows={4}
-                      className="w-full"
-                    />
-                  </div>
-
-                  <div style={{ display: 'flex', gap: '1rem' }}>
-                    <Button
-                      label="Volver"
-                      icon="pi pi-arrow-left"
-                      severity="secondary"
-                      onClick={() => setPaso(3)}
-                      style={{ flex: '0 0 auto' }}
-                    />
-                    <Button
-                      label="Agendar Cita"
-                      icon="pi pi-check"
-                      size="large"
-                      className={styles.btnAgendar}
-                      onClick={() => setShowLogin(true)}
-                      style={{ flex: 1 }}
-                    />
-                  </div>
-                </>
-              )}
+            <div className={styles.motivoSection}>
+              <label htmlFor="motivo">Motivo de la consulta (opcional)</label>
+              <InputTextarea
+                id="motivo"
+                value={motivo}
+                onChange={(e) => setMotivo(e.target.value)}
+                placeholder="Ej: Consulta de rinoplastia, consulta inicial, control postoperatorio..."
+                rows={4}
+                className="w-full"
+              />
             </div>
-          </Card>
 
-        </div>
-      </div>
+            <div style={{ display: 'flex', gap: '1rem' }}>
+              <Button
+                label="Volver"
+                icon="pi pi-arrow-left"
+                severity="secondary"
+                onClick={() => setPaso(3)}
+                style={{ flex: '0 0 auto' }}
+              />
+              <Button
+                label="Agendar Cita"
+                icon="pi pi-check"
+                size="large"
+                className={styles.btnAgendar}
+                onClick={() => setShowLogin(true)}
+                style={{ flex: 1 }}
+              />
+            </div>
+          </div>
+        </Card>
+      )}
 
       {/* Modal Login Paciente */}
       <Dialog
