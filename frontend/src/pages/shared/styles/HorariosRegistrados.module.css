@@ -299,11 +299,11 @@
 }
 
 .horarioTable :global(.p-paginator .p-paginator-pages .p-paginator-page.p-highlight) {
-  background: #43a047;
+  background: #1976d2;
   color: white;
-  border-color: #43a047;
+  border-color: #1976d2;
   font-weight: 600;
-  box-shadow: 0 2px 4px rgba(67, 160, 71, 0.3);
+  box-shadow: 0 2px 4px rgba(25, 118, 210, 0.3);
 }
 
 /* Scrollbar personalizado */
@@ -318,7 +318,7 @@
 }
 
 .horarioTable :global(.p-datatable-wrapper::-webkit-scrollbar-thumb) {
-  background: #81c784;
+  background: #42a5f5;
   border-radius: 5px;
 }
 

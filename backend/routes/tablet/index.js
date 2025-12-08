@@ -17,7 +17,7 @@ router.get('/health', (req, res) => {
         success: true,
         mensaje: 'Tablet API funcionando correctamente',
         timestamp: new Date().toISOString(),
-        servidor: 'Backend Asistencias HealthyFood',
+        servidor: 'Backend Asistencias Amaya Estetica',
         version: '1.0.0'
     });
 });
@@ -26,7 +26,7 @@ router.get('/health', (req, res) => {
 router.get('/', (req, res) => {
     res.json({
         success: true,
-        mensaje: 'API Tablet - Registro Asistencias HealthyFood',
+        mensaje: 'API Tablet - Registro Asistencias Amaya Estetica',
         endpoints: {
             empleados: '/api/tablet/empleados',
             asistencias: '/api/tablet/asistencias',

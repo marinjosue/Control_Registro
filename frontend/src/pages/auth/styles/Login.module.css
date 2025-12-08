@@ -15,8 +15,8 @@
     top: 2rem;
     left: 2rem;
     background: rgba(255, 255, 255, 0.95);
-    color: #43a047;
-    border: 2px solid #43a047;
+    color: #1976d2;
+    border: 2px solid #1976d2;
     padding: 0.75rem 1.5rem;
     border-radius: 25px;
     cursor: pointer;
@@ -30,10 +30,10 @@
 }
 
 .backButton:hover {
-    background: #43a047;
+    background: #1976d2;
     color: white;
     transform: translateX(-5px);
-    box-shadow: 0 4px 15px rgba(67, 160, 71, 0.3);
+    box-shadow: 0 4px 15px rgba(25, 118, 210, 0.3);
 }
 
 /* Lado izquierdo con fondo verde profesional */
@@ -42,7 +42,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #43a047 0%, #81c784 100%); /* Verde más claro y profesional */
+    background: linear-gradient(135deg, #1976d2 0%, #42a5f5 100%);
     min-height: 100vh;
     padding: 0 32px;
     position: relative;
@@ -81,7 +81,7 @@
     margin-bottom: 24px;
     background: white;
     border-radius: 50%;
-    box-shadow: 0 4px 24px rgba(67, 160, 71, 0.18);
+    box-shadow: 0 4px 24px rgba(25, 118, 210, 0.18);
     border: 5px solid #fff;
     display: flex;
     align-items: center;
@@ -95,7 +95,7 @@
     font-weight: bold;
     margin-bottom: 20px;
     font-family: var(--font-main);
-    text-shadow: 0 2px 4px rgba(67, 160, 71, 0.18);
+    text-shadow: 0 2px 4px rgba(25, 118, 210, 0.18);
     text-align: center;
 }
 
@@ -105,7 +105,7 @@
     font-family: var(--font-main);
     margin: 0;
     line-height: 1.4;
-    text-shadow: 0 1px 2px rgba(67, 160, 71, 0.10);
+    text-shadow: 0 1px 2px rgba(25, 118, 210, 0.10);
     text-align: center;
 }
 
@@ -125,7 +125,7 @@
     max-width: 400px;
     background-color: white;
     border-radius: 16px;
-    box-shadow: 0 4px 24px rgba(67, 160, 71, 0.10);
+    box-shadow: 0 4px 24px rgba(25, 118, 210, 0.10);
     padding: 30px;
     margin-bottom: 28px;
     position: relative;
@@ -140,8 +140,8 @@
     object-fit: contain;
     border-radius: 50%;
     background: #e3f2fd;
-    border: 2px solid #43a047;
-    box-shadow: 0 2px 8px rgba(67,160,71,0.10);
+    border: 2px solid #1976d2;
+    box-shadow: 0 2px 8px rgba(25,118,210,0.10);
 }
 
 /* Formulario */
@@ -178,8 +178,8 @@
 }
 
 .input:focus {
-    border-color: #43a047;
-    box-shadow: 0 0 0 2px rgba(67, 160, 71, 0.15);
+    border-color: #1976d2;
+    box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.15);
     outline: none;
 }
 
@@ -203,7 +203,7 @@
 }
 
 .togglePasswordBtn:hover {
-    color: #43a047;
+    color: #1976d2;
 }
 
 .options {
@@ -213,19 +213,19 @@
 }
 
 .forgotPassword {
-    color: #43a047;
+    color: #1976d2;
     font-size: 14px;
     text-decoration: none;
     font-weight: 500;
 }
 
 .forgotPassword:hover {
-    color: #388e3c;
+    color: #1565c0;
     text-decoration: underline;
 }
 
 .loginButton {
-    background-color: #43a047;
+    background-color: #1976d2;
     color: white;
     padding: 14px;
     border: none;
@@ -239,12 +239,12 @@
 }
 
 .loginButton:hover {
-    background-color: #388e3c;
-    box-shadow: 0 2px 6px rgba(27, 94, 32, 0.3);
+    background-color: #1565c0;
+    box-shadow: 0 2px 6px rgba(21, 101, 192, 0.3);
 }
 
 .loginButton:disabled {
-    background-color: #b9f6ca;
+    background-color: #90caf9;
     cursor: not-allowed;
     box-shadow: none;
 }

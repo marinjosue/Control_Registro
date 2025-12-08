@@ -1,6 +1,6 @@
-# Registro de Asistencias - HealthyFood Backend
+# Registro de Asistencias - Amaya Estética Backend
 
-Backend para el sistema de registro de asistencias de HealthyFood.
+Backend para el sistema de registro de asistencias de Amaya Estética e Importaciones.
 
 ## Instalación
 
