@@ -5,6 +5,7 @@ import Login from '../pages/auth';
 import ForgotPassword from '../pages/auth/ForgotPassword';
 import ResetPassword from '../pages/auth/ResetPassword';
 import Principal from '../pages/principal';
+import ProductDetail from '../pages/product/ProductDetail';
 import { useAuth } from '../context/AuthContext';
 
 // Importar las rutas por área
@@ -13,14 +14,14 @@ import AgendaRoutes from './AgendaRoutes';
 
 export const PrivateRoute = ({ children, allowedRoles = [] }) => {
   const { isAuthenticated, user } = useAuth();
-  
+
   if (!isAuthenticated) return <Navigate to="/login" />;
-  
+
   // Si se especifican roles permitidos, verificar que el usuario tenga uno de ellos
   if (allowedRoles.length > 0 && !allowedRoles.includes(user?.rol)) {
     return <Navigate to="/" />;
   }
-  
+
   return children;
 };
 
@@ -33,18 +34,19 @@ const AppRoutes = () => (
   <Routes>
     {/* Ruta principal - Landing Page */}
     <Route path="/" element={<Principal />} />
-    
+    <Route path="/producto/:id" element={<ProductDetail />} />
+
     {/* Rutas públicas */}
     <Route path="/login" element={<Login />} />
     <Route path="/forgot-password" element={<ForgotPassword />} />
     <Route path="/reset-password/:token" element={<ResetPassword />} />
-    
+
     {/* Rutas de Agenda (público) */}
     {AgendaRoutes()}
-    
+
     {/* Rutas de Registro de Asistencia (privado) */}
     {RegistroAsistenciaRoutes()}
-    
+
     {/* Ruta por defecto */}
     <Route path="*" element={<Navigate to="/" />} />
   </Routes>
