@@ -2,44 +2,44 @@
 import api from './token';
 
 export const getAsistencias = async (params = {}) => {
-    try {
-        // Asegurarnos de que estamos solicitando incluir la información completa de Empleados y Áreas
-        const includeParams = {
-            ...params,
-            include_empleado: true,
-            include_area: true,
-            include_cargo: true
-        };
-        
-        const response = await api.get(`/asistencias`, { 
-            params: includeParams,
-            timeout: 10000 // 10 segundos de timeout
+  try {
+    // Asegurarnos de que estamos solicitando incluir la información completa de Empleados y Áreas
+    const includeParams = {
+      ...params,
+      include_empleado: true,
+      include_area: true,
+      include_cargo: true
+    };
+
+    const response = await api.get(`/asistencias`, {
+      params: includeParams,
+      timeout: 10000 // 10 segundos de timeout
+    });
+
+    if (response.data && Array.isArray(response.data)) {
+      console.log(`Recibidas ${response.data.length} asistencias del servidor`);
+      // Log para diagnosticar si las áreas vienen correctamente
+      const primerEmpleado = response.data[0]?.Empleado;
+      if (primerEmpleado) {
+        console.log('Datos del primer empleado:', {
+          nombre: `${primerEmpleado.nombres} ${primerEmpleado.apellidos}`,
+          area: primerEmpleado.Area?.nombre || 'Sin área',
+          cargo: primerEmpleado.Cargo?.cargo || 'Sin cargo'
         });
-        
-        if (response.data && Array.isArray(response.data)) {
-            console.log(`Recibidas ${response.data.length} asistencias del servidor`);
-            // Log para diagnosticar si las áreas vienen correctamente
-            const primerEmpleado = response.data[0]?.Empleado;
-            if (primerEmpleado) {
-                console.log('Datos del primer empleado:', {
-                    nombre: `${primerEmpleado.nombres} ${primerEmpleado.apellidos}`,
-                    area: primerEmpleado.Area?.nombre || 'Sin área',
-                    cargo: primerEmpleado.Cargo?.cargo || 'Sin cargo'
-                });
-            }
-            return response.data;
-        }
-        
-        // Si no es un array, podría ser un objeto con paginación
-        if (response.data && response.data.asistencias) {
-            return response.data.asistencias;
-        }
-        
-        return [];
-    } catch (error) {
-        console.error('Error fetching asistencias:', error);
-        throw new Error(error.response?.data?.error || 'Error al cargar asistencias');
+      }
+      return response.data;
     }
+
+    // Si no es un array, podría ser un objeto con paginación
+    if (response.data && response.data.asistencias) {
+      return response.data.asistencias;
+    }
+
+    return [];
+  } catch (error) {
+    console.error('Error fetching asistencias:', error);
+    throw new Error(error.response?.data?.error || 'Error al cargar asistencias');
+  }
 };
 
 export const createAsistencia = async (asistenciaData) => {
