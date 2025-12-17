@@ -1,0 +1,188 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #2c3e50;
+}
+
+.backButton {
+    background: none;
+    border: none;
+    color: #7f8c8d;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.backButton:hover {
+    color: #d4a5d4;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+}
+
+.gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.mainImageContainer {
+    width: 100%;
+    height: 500px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mainImage {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.thumbnails {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+}
+
+.thumbnail {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    object-fit: cover;
+    transition: all 0.2s ease;
+}
+
+.thumbnail.active {
+    border-color: #d4a5d4;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.price {
+    font-size: 2rem;
+    color: #d4a5d4;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.sku {
+    font-size: 0.9rem;
+    color: #95a5a6;
+    margin-bottom: 2rem;
+}
+
+.description {
+    line-height: 1.8;
+    color: #5a6c7d;
+    margin-bottom: 2.5rem;
+}
+
+/* Style HTML content inside description */
+.description ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.description li {
+    margin-bottom: 0.5rem;
+}
+
+.description p {
+    margin-bottom: 1rem;
+}
+
+.contactButton {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: white;
+    border: none;
+    padding: 1.2rem 2rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    text-decoration: none;
+    width: fit-content;
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+}
+
+.contactButton:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(37, 211, 102, 0.4);
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .mainImageContainer {
+        height: 350px;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+}
+.infoSection {
+  margin-bottom: 2rem;
+  border-top: 1px solid #eee;
+  padding-top: 1.5rem;
+}
+
+.infoTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 0.8rem;
+}
+
+.infoContent {
+  font-size: 0.95rem;
+  color: #5a6c7d;
+  line-height: 1.6;
+}
+
+.infoContent table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+.infoContent td {
+  padding: 0.5rem;
+  border-bottom: 1px solid #f0f0f0;
+}
